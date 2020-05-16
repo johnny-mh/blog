@@ -34,6 +34,8 @@ module.exports = ({ website }) => {
         resolve: 'gatsby-source-filesystem',
         options: { name: 'page', path: './content/pages' }
       },
+      'gatsby-plugin-sass',
+      'gatsby-plugin-styled-components',
       'gatsby-plugin-transition-link',
       'gatsby-plugin-sharp',
       'gatsby-transformer-sharp',
@@ -48,6 +50,19 @@ module.exports = ({ website }) => {
               options: { maxWidth: 1300, showCaptions: ['alt'] }
             }
           ]
+        }
+      },
+      {
+        resolve: 'gatsby-plugin-manifest',
+        options: {
+          name: website.title,
+          short_name: website.titleAlt,
+          description: website.description,
+          start_url: pathPrefix,
+          background_color: website.backgroundColor,
+          theme_color: website.themeColor,
+          display: 'standalone',
+          icon: website.favicon
         }
       }
     ]

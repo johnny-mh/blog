@@ -95,8 +95,8 @@ const Pager = ({ previousPagePath, nextPagePath }) => (
 )
 
 Pager.propTypes = {
-  previousPagePath: PropTypes.string.isRequired,
-  nextPagePath: PropTypes.string.isRequired
+  previousPagePath: PropTypes.string,
+  nextPagePath: PropTypes.string
 }
 
 export default Pager

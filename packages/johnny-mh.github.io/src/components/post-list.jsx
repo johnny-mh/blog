@@ -95,7 +95,9 @@ const PostList = ({ posts }) => (
               <TimeIcon /> {post.timeToRead}분 소요
             </span>
             {post.frontmatter.updatedAt ? (
-              <span className="updated">※ 업데이트</span>
+              <span className="updated">
+                ※ {DateTime.fromISO(post.frontmatter.updatedAt).toFormat('M/d')} 업데이트
+              </span>
             ) : null}
           </div>
         </article>

@@ -3,7 +3,7 @@ title: Ghost S1 조립컴퓨터 수리
 categories: [일상]
 tags: [ghost s1]
 ---
-![Ghost S1조립 PC](./R0000467.jpg)
+![Louqe Ghost S1과 Synology DS216j](./R0000467.jpg)
 
 어렸을 때 PC게임을 좋아했다. 100만원 남짓이었던 첫 월급으로 게임용 PC를 구입하고. 상상도 못했던 [크라이시스](https://www.ea.com/games/crysis/crysis?isLocalized=true)를 돌렸을 때의 감격이 아직도 기억난다.
 

@@ -116,7 +116,7 @@ const TOC = ({ headings }) => {
   return (
     <StyledToc>
       <Sticky top={100}>
-        { /* eslint-disable-next-line */ }
+        {/* eslint-disable-next-line */}
         <div className="wrapper" onClick={onClick} onKeyDown={onClick}>
           <ol>
             {headers.map(({ value, depth }, idx) => (
@@ -140,8 +140,8 @@ const TOC = ({ headings }) => {
 TOC.propTypes = {
   headings: PropTypes.arrayOf(
     PropTypes.shape({
-      value: PropTypes.string.isRequired,
-      depth: PropTypes.number.isRequired
+      value: PropTypes.string,
+      depth: PropTypes.number
     })
   )
 }

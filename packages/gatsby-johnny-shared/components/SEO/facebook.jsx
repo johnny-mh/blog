@@ -24,10 +24,10 @@ Facebook.propTypes = {
   title: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  name: PropTypes.string,
+  name: PropTypes.string
 }
 
 Facebook.defaultProps = {
   type: 'website',
-  name: null,
+  name: null
 }
