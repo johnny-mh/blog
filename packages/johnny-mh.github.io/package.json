@@ -1,8 +1,13 @@
 {
-  "name": "@johnny-blog/johnny-mh.github.io",
+  "name": "johnny-mh.github.io",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "start": "serve public/"
+  },
   "dependencies": {
     "gatsby": "^2.21.33",
     "gatsby-johnny-shared": "^1.0.0",
@@ -17,10 +22,5 @@
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0",
     "styled-components": "^5.1.0"
-  },
-  "scripts": {
-    "start": "serve public/",
-    "build": "gatsby build",
-    "develop": "gatsby develop"
   }
 }
