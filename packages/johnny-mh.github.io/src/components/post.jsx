@@ -3,9 +3,10 @@ import { Link, graphql } from 'gatsby'
 import { isEmpty } from 'lodash'
 import PropTypes from 'prop-types'
 import React from 'react'
-// import TOC from './toc'
-import TagIcon from '../images/tag.svg'
 import styled from 'styled-components'
+
+import { TOC } from 'gatsby-johnny-shared'
+import TagIcon from '../images/tag.svg'
 
 export const query = graphql`
   fragment Post on MarkdownRemark {
@@ -14,13 +15,13 @@ export const query = graphql`
     frontmatter {
       categories
       tags
+      title
     }
     fields {
       slug
       date
-      #   sortDate
     }
-    # ...TOC
+    ...TOC
   }
 `
 
@@ -84,19 +85,19 @@ const Post = props => {
   if (!isEmpty(props.frontmatter.tags)) {
     meta.push({
       name: 'keywords',
-      content: props.frontmatter.tags,
+      content: props.frontmatter.tags
     })
   }
 
   return (
     <StyledPost>
-      {/* <TOC headings={props.headings} /> */}
+      <TOC headings={props.headings} />
       <header>
         <h1>{props.frontmatter.title}</h1>
         <div className="post-meta">
           <span className="date">
             <time itemProp="datePublished">
-              {DateTime.fromISO(props.fields.sortDate).toFormat('DDD')}
+              {DateTime.fromISO(props.fields.date).toFormat('DDD')}
             </time>
           </span>
           <span className="categories">
@@ -121,7 +122,10 @@ const Post = props => {
             .reduce((prev, curr) => [prev, ', ', curr])}
         </div>
       </header>
-      <div dangerouslySetInnerHTML={{ __html: props.html }}></div>
+      <div
+        className="markdown-content"
+        dangerouslySetInnerHTML={{ __html: props.html }}
+      ></div>
     </StyledPost>
   )
 }
@@ -132,19 +136,19 @@ export const postPropTypes = {
   frontmatter: PropTypes.shape({
     title: PropTypes.string,
     categories: PropTypes.arrayOf(PropTypes.string),
-    tags: PropTypes.arrayOf(PropTypes.string),
+    tags: PropTypes.arrayOf(PropTypes.string)
   }),
   fields: PropTypes.shape({
     slug: PropTypes.string,
     date: PropTypes.string,
-    sortDate: PropTypes.string,
+    sortDate: PropTypes.string
   }),
-  //   headings: PropTypes.arrayOf(
-  //     PropTypes.shape({
-  //       value: PropTypes.string.isRequired,
-  //       depth: PropTypes.number.isRequired
-  //     })
-  //   )
+  headings: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string,
+      depth: PropTypes.number
+    })
+  )
 }
 
 Post.propTypes = postPropTypes

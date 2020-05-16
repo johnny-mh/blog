@@ -9,7 +9,7 @@ const FadeLink = props => {
     ..._props,
     fade: true,
     duration: 0.2,
-    activeClassName: 'active',
+    activeClassName: 'active'
   }
 
   const onClick = () => {
@@ -27,7 +27,7 @@ const FadeLink = props => {
 
 FadeLink.propTypes = {
   stt: PropTypes.bool,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 }
 
 export default FadeLink

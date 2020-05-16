@@ -20,5 +20,5 @@ module.exports = {
   facebook: '', // Facebook Site Name
   googleAnalyticsID: 'UA-153662393-1',
 
-  skipNavId: 'reach-skip-nav', // ID for the "Skip to content" a11y feature
+  skipNavId: 'reach-skip-nav' // ID for the "Skip to content" a11y feature
 }

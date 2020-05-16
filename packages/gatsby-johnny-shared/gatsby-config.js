@@ -15,24 +15,24 @@ module.exports = ({ website }) => {
       ogLanguage: website.ogLanguage,
       author: website.author,
       twitter: website.twitter,
-      facebook: website.facebook,
+      facebook: website.facebook
     },
     plugins: [
       {
         resolve: 'gatsby-source-filesystem',
-        options: { path: './src/images' },
+        options: { path: './src/images' }
       },
       {
         resolve: 'gatsby-plugin-react-svg',
-        options: { rule: { include: /images\/.*\.svg$/ } },
+        options: { rule: { include: /images\/.*\.svg$/ } }
       },
       {
         resolve: 'gatsby-source-filesystem',
-        options: { name: 'post', path: './content/posts' },
+        options: { name: 'post', path: './content/posts' }
       },
       {
         resolve: 'gatsby-source-filesystem',
-        options: { name: 'page', path: './content/pages' },
+        options: { name: 'page', path: './content/pages' }
       },
       'gatsby-plugin-transition-link',
       'gatsby-plugin-sharp',
@@ -41,13 +41,15 @@ module.exports = ({ website }) => {
         resolve: 'gatsby-transformer-remark',
         options: {
           plugins: [
+            'gatsby-remark-prismjs',
+            'gatsby-remark-autolink-headers',
             {
               resolve: 'gatsby-remark-images',
-              options: { maxWidth: 1300, showCaptions: ['alt'] },
-            },
-          ],
-        },
-      },
-    ],
+              options: { maxWidth: 1300, showCaptions: ['alt'] }
+            }
+          ]
+        }
+      }
+    ]
   }
 }
