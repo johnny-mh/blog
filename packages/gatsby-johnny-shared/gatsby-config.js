@@ -106,7 +106,10 @@ module.exports = ({ website }) => {
               },
               query: `
               {
-                allMarkdownRemark(sort: {order: DESC, fields: fields___date}, filter: {fields: {type: {eq: "post"}}}) {
+                allMarkdownRemark(
+                  sort: {order: DESC, fields: fields___date},
+                  filter: {fields: {type: {eq: "post"}}}
+                ) {
                   edges {
                     node {
                       excerpt

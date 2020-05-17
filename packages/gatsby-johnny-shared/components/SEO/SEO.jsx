@@ -170,7 +170,9 @@ const SEO = ({ title, desc, banner, article, node, keywords }) => {
         {keywords && keywords.length > 0 ? (
           <meta name="keyworkds" content={keywords.join(',')} />
         ) : null}
-        {/* Insert schema.org data conditionally (webpage/article) + everytime (breadcrumbs) */}
+        {/**
+         * Insert schema.org data conditionally (webpage/article) + everytime (breadcrumbs)
+         */}
         {!article && (
           <script type="application/ld+json">
             {JSON.stringify(schemaOrgWebPage)}

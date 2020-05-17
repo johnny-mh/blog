@@ -124,7 +124,10 @@ const createEachPostAndPagedPosts = async ({
   )) {
     result = await graphql(`
       {
-        allMarkdownRemark(filter: {frontmatter: {categories: {in: "${categoryName}"}}}, sort: {fields: fields___date, order: DESC}) {
+        allMarkdownRemark(
+          filter: {frontmatter: {categories: {in: "${categoryName}"}}},
+          sort: {fields: fields___date, order: DESC}
+        ) {
           edges {
             node {
               id
@@ -154,7 +157,10 @@ const createEachPostAndPagedPosts = async ({
   for (const { name } of _tags) {
     const result = await graphql(`
       {
-        allMarkdownRemark(filter: {frontmatter: {tags: {in: "${name}"}}}, sort: {fields: fields___date, order: DESC}) {
+        allMarkdownRemark(
+          filter: {frontmatter: {tags: {in: "${name}"}}},
+          sort: {fields: fields___date, order: DESC}
+        ) {
           edges {
             node {
               id
