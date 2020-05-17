@@ -1,8 +1,8 @@
 module.exports = {
   plugins: [
     {
-      resolve: '@johnny-blog/shared',
-      options: { website: require('./website') },
-    },
-  ],
+      resolve: 'gatsby-johnny-shared',
+      options: { website: require('./website') }
+    }
+  ]
 }
