@@ -3,12 +3,11 @@ exports.createSchemaCustomization = ({ actions }) => {
 
   const typeDefs = `
     type Frontmatter @infer {
-    featuredImage: File
-    featuredImageCaption: String
+      featuredImageCaption: String
     }
 
     type MarkdownRemark implements Node @infer {
-    frontmatter: Frontmatter
+      frontmatter: Frontmatter
     }
   `
 
