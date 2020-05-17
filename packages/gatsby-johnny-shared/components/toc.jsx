@@ -78,7 +78,7 @@ const TOC = ({ headings }) => {
   }
   const headers = headings
     .filter(({ depth }) => depth < 3)
-    .map(h => ({ ...h, slug: slugger.slug(h.value) }))
+    .map((h) => ({ ...h, slug: slugger.slug(h.value) }))
 
   useEffect(() => {
     const offsets = headers.map(({ slug }) =>
@@ -102,7 +102,7 @@ const TOC = ({ headings }) => {
       ) {
         index = maxIndex
       } else {
-        index = findIndex(offsets, offset => offset > scrollY) - 1
+        index = findIndex(offsets, (offset) => offset > scrollY) - 1
       }
 
       setCurrentIndex(index)
@@ -123,8 +123,7 @@ const TOC = ({ headings }) => {
               <li
                 key={idx}
                 style={{ paddingLeft: `${depth * 11}px` }}
-                className={currentIndex === idx ? 'active' : ''}
-              >
+                className={currentIndex === idx ? 'active' : ''}>
                 <a data-idx={idx} href={`#${slugger.slug(value)}`}>
                   {value}
                 </a>
@@ -141,9 +140,9 @@ TOC.propTypes = {
   headings: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string,
-      depth: PropTypes.number
+      depth: PropTypes.number,
     })
-  )
+  ),
 }
 
 export default TOC

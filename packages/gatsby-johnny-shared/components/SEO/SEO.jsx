@@ -41,15 +41,15 @@ const SEO = ({ title, desc, banner, article, node, keywords }) => {
       ogLanguage,
       author,
       twitter,
-      facebook
-    }
+      facebook,
+    },
   } = site
 
   const seo = {
     title: title || defaultTitle,
     description: desc || defaultDescription,
     image: `${siteUrl}${banner || defaultBanner}`,
-    url: `${siteUrl}${pathname || ''}`
+    url: `${siteUrl}${pathname || ''}`,
   }
 
   // schema.org in JSONLD format
@@ -66,27 +66,27 @@ const SEO = ({ title, desc, banner, article, node, keywords }) => {
     name: defaultTitle,
     author: {
       '@type': 'Person',
-      name: author
+      name: author,
     },
     copyrightHolder: {
       '@type': 'Person',
-      name: author
+      name: author,
     },
     copyrightYear: '2019',
     creator: {
       '@type': 'Person',
-      name: author
+      name: author,
     },
     publisher: {
       '@type': 'Person',
-      name: author
+      name: author,
     },
     datePublished: '2019-01-18T10:30:00+01:00',
     dateModified: buildTime,
     image: {
       '@type': 'ImageObject',
-      url: `${siteUrl}${defaultBanner}`
-    }
+      url: `${siteUrl}${defaultBanner}`,
+    },
   }
 
   // Initial breadcrumb list
@@ -95,10 +95,10 @@ const SEO = ({ title, desc, banner, article, node, keywords }) => {
       '@type': 'ListItem',
       item: {
         '@id': siteUrl,
-        name: 'Homepage'
+        name: 'Homepage',
       },
-      position: 1
-    }
+      position: 1,
+    },
   ]
 
   let schemaArticle = null
@@ -109,24 +109,24 @@ const SEO = ({ title, desc, banner, article, node, keywords }) => {
       '@type': 'Article',
       author: {
         '@type': 'Person',
-        name: author
+        name: author,
       },
       copyrightHolder: {
         '@type': 'Person',
-        name: author
+        name: author,
       },
       copyrightYear: '2019',
       creator: {
         '@type': 'Person',
-        name: author
+        name: author,
       },
       publisher: {
         '@type': 'Organization',
         name: author,
         logo: {
           '@type': 'ImageObject',
-          url: `${siteUrl}${defaultBanner}`
-        }
+          url: `${siteUrl}${defaultBanner}`,
+        },
       },
       datePublished: node.first_publication_date,
       dateModified: node.last_publication_date,
@@ -137,18 +137,18 @@ const SEO = ({ title, desc, banner, article, node, keywords }) => {
       name: seo.title,
       image: {
         '@type': 'ImageObject',
-        url: seo.image
+        url: seo.image,
       },
-      mainEntityOfPage: seo.url
+      mainEntityOfPage: seo.url,
     }
     // Push current blogpost into breadcrumb list
     itemListElement.push({
       '@type': 'ListItem',
       item: {
         '@id': seo.url,
-        name: seo.title
+        name: seo.title,
       },
-      position: 2
+      position: 2,
     })
   }
 
@@ -157,7 +157,7 @@ const SEO = ({ title, desc, banner, article, node, keywords }) => {
     '@type': 'BreadcrumbList',
     description: 'Breadcrumbs list',
     name: 'Breadcrumbs',
-    itemListElement
+    itemListElement,
   }
 
   return (
@@ -211,7 +211,7 @@ SEO.propTypes = {
   pathname: PropTypes.string,
   article: PropTypes.bool,
   node: PropTypes.object,
-  keywords: PropTypes.arrayOf(PropTypes.string)
+  keywords: PropTypes.arrayOf(PropTypes.string),
 }
 
 SEO.defaultProps = {
@@ -220,5 +220,5 @@ SEO.defaultProps = {
   banner: null,
   pathname: null,
   article: false,
-  node: null
+  node: null,
 }

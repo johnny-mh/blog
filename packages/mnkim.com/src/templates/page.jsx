@@ -23,15 +23,17 @@ const StyledPageTemplate = styled.div`
 
 const PageTemplate = ({
   data: {
-    markdownRemark: { html }
+    markdownRemark: { html },
   },
-  pageContext: { pageTitle }
+  pageContext: { pageTitle },
 }) => {
   return (
     <Layout>
       <SEO title={pageTitle} />
       <StyledPageTemplate>
-        <div className="markdown-content" dangerouslySetInnerHTML={{ __html: html }}></div>
+        <div
+          className="markdown-content"
+          dangerouslySetInnerHTML={{ __html: html }}></div>
       </StyledPageTemplate>
     </Layout>
   )
@@ -40,12 +42,12 @@ const PageTemplate = ({
 PageTemplate.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
-      html: PropTypes.string
-    })
+      html: PropTypes.string,
+    }),
   }),
   pageContext: PropTypes.shape({
-    pageTitle: PropTypes.string
-  })
+    pageTitle: PropTypes.string,
+  }),
 }
 
 export default PageTemplate

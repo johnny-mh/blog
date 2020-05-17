@@ -15,24 +15,24 @@ module.exports = ({ website }) => {
       ogLanguage: website.ogLanguage,
       author: website.author,
       twitter: website.twitter,
-      facebook: website.facebook
+      facebook: website.facebook,
     },
     plugins: [
       {
         resolve: 'gatsby-source-filesystem',
-        options: { path: './src/images' }
+        options: { path: './src/images' },
       },
       {
         resolve: 'gatsby-plugin-react-svg',
-        options: { rule: { include: /images\/.*\.svg$/ } }
+        options: { rule: { include: /images\/.*\.svg$/ } },
       },
       {
         resolve: 'gatsby-source-filesystem',
-        options: { name: 'post', path: './content/posts' }
+        options: { name: 'post', path: './content/posts' },
       },
       {
         resolve: 'gatsby-source-filesystem',
-        options: { name: 'page', path: './content/pages' }
+        options: { name: 'page', path: './content/pages' },
       },
       'gatsby-plugin-sass',
       'gatsby-plugin-styled-components',
@@ -47,10 +47,10 @@ module.exports = ({ website }) => {
             'gatsby-remark-autolink-headers',
             {
               resolve: 'gatsby-remark-images',
-              options: { maxWidth: 1300, showCaptions: ['alt'] }
-            }
-          ]
-        }
+              options: { maxWidth: 1300, showCaptions: ['alt'] },
+            },
+          ],
+        },
       },
       {
         resolve: 'gatsby-plugin-manifest',
@@ -62,14 +62,14 @@ module.exports = ({ website }) => {
           background_color: website.backgroundColor,
           theme_color: website.themeColor,
           display: 'standalone',
-          icon: website.favicon
-        }
+          icon: website.favicon,
+        },
       },
       {
         resolve: 'gatsby-plugin-google-analytics',
         options: {
-          trackingId: website.googleAnalyticsID
-        }
+          trackingId: website.googleAnalyticsID,
+        },
       },
       'gatsby-plugin-sitemap',
       {
@@ -90,13 +90,17 @@ module.exports = ({ website }) => {
           feeds: [
             {
               serialize: ({ query: { site, allMdx } }) => {
-                return allMdx.edges.map(edge => {
+                return allMdx.edges.map((edge) => {
                   return Object.assign({}, edge.node.frontmatter, {
                     description: edge.node.excerpt,
                     date: edge.node.frontmatter.date,
                     url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                     guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                    custom_elements: [{ 'content:encoded': edge.node.html }]
+                    custom_elements: [
+                      {
+                        'content:encoded': edge.node.html,
+                      },
+                    ],
                   })
                 })
               },
@@ -120,19 +124,19 @@ module.exports = ({ website }) => {
               }
               `,
               output: '/rss.xml',
-              title: `${website.url} RSS Feed`
-            }
-          ]
-        }
+              title: `${website.url} RSS Feed`,
+            },
+          ],
+        },
       },
       {
         resolve: 'gatsby-plugin-robots-txt',
         options: {
           host: website.url,
           sitemap: `${website.url}/sitemap.xml`,
-          policy: [{ userAgent: '*', allow: '/' }]
-        }
-      }
-    ]
+          policy: [{ userAgent: '*', allow: '/' }],
+        },
+      },
+    ],
   }
 }

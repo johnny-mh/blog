@@ -15,10 +15,19 @@ export const pageQuery = graphql`
   }
 `
 
-const AboutTemplate = ({ data: { markdownRemark: { html, frontmatter: { title } } } }) => (
+const AboutTemplate = ({
+  data: {
+    markdownRemark: {
+      html,
+      frontmatter: { title },
+    },
+  },
+}) => (
   <Layout>
     <SEO title={title} />
-    <div className="markdown-content" dangerouslySetInnerHTML={{ __html: html }}></div>
+    <div
+      className="markdown-content"
+      dangerouslySetInnerHTML={{ __html: html }}></div>
   </Layout>
 )
 
@@ -27,11 +36,11 @@ AboutTemplate.propTypes = {
     markdownRemark: PropTypes.shape({
       html: PropTypes.string,
       frontmatter: PropTypes.shape({
-        title: PropTypes.string
-      })
-    })
+        title: PropTypes.string,
+      }),
+    }),
   }),
-  pageContext: PropTypes.any
+  pageContext: PropTypes.any,
 }
 
 export default AboutTemplate

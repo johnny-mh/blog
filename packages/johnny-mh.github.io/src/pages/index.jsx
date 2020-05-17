@@ -9,24 +9,28 @@ import RxjsIcon from '../images/rxjs.svg'
 import styled from 'styled-components'
 
 export const query = graphql`
-{
-  allMarkdownRemark(filter: {fields: {type: {eq: "post"}}}, sort: {fields: fields___date, order: DESC}, limit: 5) {
-    edges {
-      node {
-        id
-        frontmatter {
-          title
-          updatedAt
+  {
+    allMarkdownRemark(
+      filter: { fields: { type: { eq: "post" } } }
+      sort: { fields: fields___date, order: DESC }
+      limit: 5
+    ) {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            updatedAt
+          }
+          fields {
+            slug
+            date
+          }
+          timeToRead
         }
-        fields {
-          slug
-          date
-        }
-        timeToRead
       }
     }
   }
-}
 `
 
 const StyledIndex = styled.div`
@@ -88,7 +92,11 @@ const StyledIndex = styled.div`
   }
 `
 
-const Index = ({ data: { allMarkdownRemark: { edges } } }) => (
+const Index = ({
+  data: {
+    allMarkdownRemark: { edges },
+  },
+}) => (
   <Layout>
     <SEO />
     <Profile />
@@ -109,8 +117,7 @@ const Index = ({ data: { allMarkdownRemark: { edges } } }) => (
                 <a
                   href="https://github.com/johnny-mh/rxjs-shell"
                   target="_blank"
-                  rel="noopener noreferrer"
-                >
+                  rel="noopener noreferrer">
                   rxjs-shell
                 </a>
                 <img
@@ -134,9 +141,9 @@ const Index = ({ data: { allMarkdownRemark: { edges } } }) => (
 Index.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.arrayOf(PropTypes.shape({ node: PropTypes.any }))
-    })
-  })
+      edges: PropTypes.arrayOf(PropTypes.shape({ node: PropTypes.any })),
+    }),
+  }),
 }
 
 export default Index

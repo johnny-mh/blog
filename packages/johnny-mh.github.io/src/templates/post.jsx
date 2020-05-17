@@ -23,10 +23,10 @@ const PostTemplate = ({ data: { markdownRemark: post }, pageContext }) => (
 
 PostTemplate.propTypes = {
   data: PropTypes.shape({
-    markdownRemark: PropTypes.shape(postPropTypes)
+    markdownRemark: PropTypes.shape(postPropTypes),
   }),
   pageContext: PropTypes.any,
-  location: PropTypes.any
+  location: PropTypes.any,
 }
 
 export default PostTemplate

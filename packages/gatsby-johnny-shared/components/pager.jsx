@@ -14,7 +14,7 @@ const StyledPager = styled.nav`
     text-align: center;
 
     li {
-      font: ${props => props.font || '600 14px Montserrat, sans-serif'};
+      font: ${(props) => props.font || '600 14px Montserrat, sans-serif'};
       display: inline-block;
       *display: block;
       *zoom: 1;
@@ -60,7 +60,7 @@ const StyledPager = styled.nav`
 `
 
 StyledPager.propTypes = {
-  font: PropTypes.string
+  font: PropTypes.string,
 }
 
 const Pager = ({ previousPagePath, nextPagePath, font }) => (
@@ -99,7 +99,7 @@ const Pager = ({ previousPagePath, nextPagePath, font }) => (
 Pager.propTypes = {
   previousPagePath: PropTypes.string,
   nextPagePath: PropTypes.string,
-  font: PropTypes.string
+  font: PropTypes.string,
 }
 
 export default Pager

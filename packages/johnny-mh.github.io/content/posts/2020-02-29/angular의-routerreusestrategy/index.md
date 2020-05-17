@@ -26,14 +26,14 @@ export abstract class RouteReuseStrategy {
   abstract shouldReuseRoute(
     future: ActivatedRouteSnapshot,
     curr: ActivatedRouteSnapshot
-  ): boolean;
+  ): boolean
 
   /**
    * 페이지를 빠져나갈 때 현재 컴포넌트 캐시 '여부'를 반환한다
    * false 반환 시 캐시 안해도 되는것으로 판단
    * true 반환 시 아래 store메서드를 호출한다
    */
-  abstract shouldDetach(route: ActivatedRouteSnapshot): boolean;
+  abstract shouldDetach(route: ActivatedRouteSnapshot): boolean
 
   /**
    * 페이지 빠져나가기 전 상태를 캐시한다
@@ -42,20 +42,20 @@ export abstract class RouteReuseStrategy {
   abstract store(
     route: ActivatedRouteSnapshot,
     handle: DetachedRouteHandle | null
-  ): void;
+  ): void
 
   /**
    * 페이지 진입 시점에 복원 '여부'를 반환한다
    * false 반환 시 복원 안해도 되는것으로 판단
    * true 반환 시 아래 retrieve메서드를 호출한다
    */
-  abstract shouldAttach(route: ActivatedRouteSnapshot): boolean;
+  abstract shouldAttach(route: ActivatedRouteSnapshot): boolean
 
   /**
    * 페이지 진입 시 캐시된 데이터를 복원한다
    * 위에서 구현한 store 메서드 호출 시점에 어딘가에 저장했던 캐시를 반환하면 된다
    */
-  abstract retrieve(route: ActivatedRouteSnapshot): DetachedRouteHandle|null;  
+  abstract retrieve(route: ActivatedRouteSnapshot): DetachedRouteHandle | null
 }
 ```
 
@@ -73,7 +73,7 @@ const routes = [
     path: 'detail/:id',
     component: DetailComponent,
   },
-];
+]
 ```
 
 위의 라우팅 설정에서 아래 컴포넌트의 링크 클릭해서 `'/detail/3'`에서 `'/detail/12'`로 이동했다면 같은 Route객체(정확히는 같은 ActivatedRouteSnapshot)를 비교한다.
@@ -86,16 +86,17 @@ const routes = [
   template: `
     <h1>detail component</h1>
     <a routerLink="/detail/12">go to '/detail/12'</a>
-    <div>{{content}}</div>
+    <div>{{ content }}</div>
   `,
 })
 export class DetailComponent {
-  content = '';
+  content = ''
 
   // '/detail/12'로 이동했을 때는 호출되지 않아 3번 데이터를 계속 보여준다
   ngOnInit() {
-    this.http.get(`/detail/${this.activatedRoute.snapshot.params.id}`)
-      .subscribe(o => (this.content = o));
+    this.http
+      .get(`/detail/${this.activatedRoute.snapshot.params.id}`)
+      .subscribe((o) => (this.content = o))
   }
 }
 ```
@@ -111,36 +112,36 @@ export class DetailComponent {
 ```ts
 export class CustomRouteReuseStrategy extends RouteReuseStrategy {
   shouldDetach(route: ActivatedRouteSnapshot) {
-    return false;
+    return false
   }
 
   store(route: ActivatedRouteSnapshot, detachedTree: DetachedRouteHandle) {}
 
   shouldAttach(route: ActivatedRouteSnapshot) {
-    return false;
+    return false
   }
 
   retrieve(route: ActivatedRouteSnapshot) {
-    return null;
+    return null
   }
 
   shouldReuseRoute(
     future: ActivatedRouteSnapshot,
     curr: ActivatedRouteSnapshot
   ) {
-    const [futureUrl, currUrl] = [future, curr].map(o =>
-      o.url.map(seg => seg.path).join('/')
-    );
+    const [futureUrl, currUrl] = [future, curr].map((o) =>
+      o.url.map((seg) => seg.path).join('/')
+    )
 
     /**
      * Route비교 시 둘 다 'detail'을 포함한 path라면 컴포넌트를
      * 재사용하지 않도록 false를 반환한다.
-     */ 
+     */
     if (futureUrl.includes('detail') && currUrl.includes('detail')) {
-      return false;
+      return false
     }
 
-    return future.routeConfig === curr.routeConfig;
+    return future.routeConfig === curr.routeConfig
   }
 }
 ```
@@ -162,35 +163,38 @@ Angular의 [RouteConfig](https://angular.io/api/router/Route)는 재귀적으로
 ```ts
 // app-routing.module.ts
 const routes = [
-  {path: 'list', component: ListComponent},
-  {path: 'detail/:id', component: DetailComponent},
+  { path: 'list', component: ListComponent },
+  { path: 'detail/:id', component: DetailComponent },
   {
-    path: "delivery",
+    path: 'delivery',
     loadChildren: () =>
-      import("./delivery/delivery.module").then(mod => mod.DeliveryModule)
-  }
-];
+      import('./delivery/delivery.module').then((mod) => mod.DeliveryModule),
+  },
+]
 
 // delivery-routing.module.ts
-const routes = [
-  {path: "detail/:id", component: DeliveryDetailComponent}
-];
+const routes = [{ path: 'detail/:id', component: DeliveryDetailComponent }]
 ```
 
-아래 `RouteReuseStrategy`는 각 호출 단계에서 url과 해당 `Route`와 연결된 컴포넌트 이름을 출력한다. 이  strategy를 사용하여 위의 Route 설정에서 발생할 수 있는 이동들에 대한 호출 로그를 분석해 보자.
+아래 `RouteReuseStrategy`는 각 호출 단계에서 url과 해당 `Route`와 연결된 컴포넌트 이름을 출력한다. 이 strategy를 사용하여 위의 Route 설정에서 발생할 수 있는 이동들에 대한 호출 로그를 분석해 보자.
 
 ```ts
 export class CustomRouteReuseStrategy implements RouteReuseStrategy {
-  shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot) {
+  shouldReuseRoute(
+    future: ActivatedRouteSnapshot,
+    curr: ActivatedRouteSnapshot
+  ) {
     // 분석을 위해 파라미터를 로깅함
-    console.log(`[future]\n${getInfo(future)}\n\n[curr]:\n${getInfo(curr)}\n\n----------`);
+    console.log(
+      `[future]\n${getInfo(future)}\n\n[curr]:\n${getInfo(curr)}\n\n----------`
+    )
 
-    return future.routeConfig === curr.routeConfig;
+    return future.routeConfig === curr.routeConfig
   }
 }
 ```
 
-*1. 앱 진입*
+_1. 앱 진입_
 
 ```text
 [future]
@@ -202,7 +206,7 @@ export class CustomRouteReuseStrategy implements RouteReuseStrategy {
 
 앱 진입 시점에 한번 호출된다. 큰 의미는 없다
 
-*2. '' 에서 'list'로 이동하는 경우*
+_2. '' 에서 'list'로 이동하는 경우_
 
 ```text
 [future]
@@ -215,7 +219,7 @@ export class CustomRouteReuseStrategy implements RouteReuseStrategy {
 
 `future`를 보면 `''`는 AppComponent, `'list'`는 ListComponent에 제공되는 것을 알 수 있다.
 
-*3. 'list'에서  'detail/2'로 이동하는 경우*
+_3. 'list'에서 'detail/2'로 이동하는 경우_
 
 ```text
 [future]
@@ -236,7 +240,7 @@ export class CustomRouteReuseStrategy implements RouteReuseStrategy {
 - 이상한 점이 있는데 두 번째 호출에서는 `future`, `curr`값이 뒤바뀌었다.
 - `future`를 보면 `AppComponent`에는 `:id`에 해당하는 문자열이 없다. 라우팅 설정 자체도 그러한데. `AppComponent`가 DI 받는 `ActivatedRouteSnapshot`에서는 `id`를 가져올 수 없는 이유이기도 하다.
 
-*4. 'detail/2'에서 'delivery/detail/4'로 이동하는 경우*
+_4. 'detail/2'에서 'delivery/detail/4'로 이동하는 경우_
 
 ```text
 [future]
@@ -264,7 +268,7 @@ export class CustomRouteReuseStrategy implements RouteReuseStrategy {
 
 상세, 목록 페이지의 경우 상세에서 뒤로가기 시 이전에 보고 있던 목록과 스크롤을 유지하면 페이지 탐색 사용성을 크게 개선할 수 있다. 특히 전자상거래 서비스의 경우 매출과 직결되는 부분이기도 하다.
 
-캐싱을 위해 일반적으로 bfcache에 의존하거나. 상세 진입 전의 앱 상태를 persist로 저장했다가 복원하는 방법을 사용하는데. 두 방법은 코드베이스 외적인 부분에 의존하기 때문에 관리가 어렵고 사이드이펙트가 있을 수 있다. 
+캐싱을 위해 일반적으로 bfcache에 의존하거나. 상세 진입 전의 앱 상태를 persist로 저장했다가 복원하는 방법을 사용하는데. 두 방법은 코드베이스 외적인 부분에 의존하기 때문에 관리가 어렵고 사이드이펙트가 있을 수 있다.
 
 RouteReuseStrategy를 이용한 방법은 캐싱이 필요한 구간에 부분적으로 적용해야 하지만 구현이 코드베이스 안에 있으므로 앞서 언급한 문제에서 자유롭다. 가능한 이 방법을 도입하는 것이 좋아 보인다.
 
@@ -276,43 +280,43 @@ RouteReuseStrategy를 이용한 방법은 캐싱이 필요한 구간에 부분�
 
 ```ts
 export class CustomRouteReuseStrategy extends RouteReuseStrategy {
-  private cache = new Map<string, DetachedRouteHandle>();
+  private cache = new Map<string, DetachedRouteHandle>()
 
   shouldDetach(route: ActivatedRouteSnapshot) {
     // 목록에서 빠져나갈 때 true반환하여 store를 호출한다
     if (getPath(route).startsWith('list')) {
-      return true;
+      return true
     }
 
-    return false;
+    return false
   }
 
   store(route: ActivatedRouteSnapshot, detachedTree: DetachedRouteHandle) {
     // 컴포넌트 상태 캐시
-    this.cache.set(getPath(route), detachedTree);
+    this.cache.set(getPath(route), detachedTree)
   }
 
   shouldAttach(route: ActivatedRouteSnapshot) {
-    const path = getPath(route);
+    const path = getPath(route)
 
     // 목록 재진입 시 캐시가 있다면 true반환하여 retrieve를 호출한다
     if (path.startsWith('list') && this.cache.has(path)) {
-      return true;
+      return true
     }
 
-    return false;
+    return false
   }
 
   retrieve(route: ActivatedRouteSnapshot) {
     // 컴포넌트 상태 복원
-    return this.cache.get(getPath(route));
+    return this.cache.get(getPath(route))
   }
 
   shouldReuseRoute(
     future: ActivatedRouteSnapshot,
     curr: ActivatedRouteSnapshot
   ) {
-    return future.routeConfig === curr.routeConfig;
+    return future.routeConfig === curr.routeConfig
   }
 }
 ```

@@ -38,8 +38,8 @@ const getTags = async ({ graphql }) => {
 
   const {
     data: {
-      allMarkdownRemark: { group: _tags }
-    }
+      allMarkdownRemark: { group: _tags },
+    },
   } = await graphql(`
     {
       allMarkdownRemark {
@@ -66,7 +66,10 @@ const getTags = async ({ graphql }) => {
  * /post/{name}
  * /post/page/{page}
  */
-const createEachPostAndPagedPosts = async ({ graphql, actions: { createPage } }) => {
+const createEachPostAndPagedPosts = async ({
+  graphql,
+  actions: { createPage },
+}) => {
   let result = await graphql(`
     {
       allMarkdownRemark(
@@ -91,7 +94,7 @@ const createEachPostAndPagedPosts = async ({ graphql, actions: { createPage } })
     component: resolve('./src/templates/post.jsx'),
     items: result.data.allMarkdownRemark.edges,
     itemToPath: 'node.fields.slug',
-    itemToId: 'node.id'
+    itemToId: 'node.id',
   })
 
   // /post/page/*
@@ -101,7 +104,7 @@ const createEachPostAndPagedPosts = async ({ graphql, actions: { createPage } })
     itemsPerPage: 10,
     pathPrefix: ({ pageNumber }) => (pageNumber === 0 ? '/post' : '/post/page'),
     component: resolve('./src/templates/posts.jsx'),
-    context: { ids: _.map(result.data.allMarkdownRemark.edges, 'node.id') }
+    context: { ids: _.map(result.data.allMarkdownRemark.edges, 'node.id') },
   })
 
   // /post/category/*
@@ -112,9 +115,13 @@ const createEachPostAndPagedPosts = async ({ graphql, actions: { createPage } })
           name: fieldValue
         }
       }
-    }`)
+    }
+  `)
 
-  for (const categoryName of _.map(result.data.allMarkdownRemark.group, 'name')) {
+  for (const categoryName of _.map(
+    result.data.allMarkdownRemark.group,
+    'name'
+  )) {
     result = await graphql(`
       {
         allMarkdownRemark(filter: {frontmatter: {categories: {in: "${categoryName}"}}}, sort: {fields: fields___date, order: DESC}) {
@@ -135,7 +142,9 @@ const createEachPostAndPagedPosts = async ({ graphql, actions: { createPage } })
           ? `/post/category/${categoryName}`
           : `/post/category/${categoryName}/page`,
       component: resolve('./src/templates/posts.jsx'),
-      context: { ids: _.map(result.data.allMarkdownRemark.edges, 'node.id') }
+      context: {
+        ids: _.map(result.data.allMarkdownRemark.edges, 'node.id'),
+      },
     })
   }
 
@@ -161,7 +170,9 @@ const createEachPostAndPagedPosts = async ({ graphql, actions: { createPage } })
       pathPrefix: ({ pageNumber }) =>
         pageNumber === 0 ? `/post/tag/${name}` : `/post/tag/${name}/page`,
       component: resolve('./src/templates/posts.jsx'),
-      context: { ids: _.map(result.data.allMarkdownRemark.edges, 'node.id') }
+      context: {
+        ids: _.map(result.data.allMarkdownRemark.edges, 'node.id'),
+      },
     })
   }
 }
@@ -185,7 +196,8 @@ const createPages = async ({ graphql, actions: { createPage } }) => {
           }
         }
       }
-    }`)
+    }
+  `)
 
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
     const path = node.fields.slug.replace(/^\/pages/, '')
@@ -193,7 +205,7 @@ const createPages = async ({ graphql, actions: { createPage } }) => {
     createPage({
       path,
       component: resolve('./src/templates/page.jsx'),
-      context: { id: node.id }
+      context: { id: node.id },
     })
   })
 }
@@ -205,13 +217,14 @@ const createArchives = async ({ graphql, actions: { createPage } }) => {
   const tags = await getTags({ graphql })
   let result = await graphql(`
     {
-      allMarkdownRemark{
+      allMarkdownRemark {
         group(field: frontmatter___categories) {
           name: fieldValue
           totalCount
         }
       }
-    }`)
+    }
+  `)
 
   const categories = _.chain(result.data.allMarkdownRemark.group)
     .orderBy(['totalCount', 'name'], ['desc', 'asc'])
@@ -221,7 +234,10 @@ const createArchives = async ({ graphql, actions: { createPage } }) => {
 
   result = await graphql(`
     {
-      allMarkdownRemark(filter: {fields: {type: {eq: "post"}}}, sort: {order: DESC, fields: fields___date}) {
+      allMarkdownRemark(
+        filter: { fields: { type: { eq: "post" } } }
+        sort: { order: DESC, fields: fields___date }
+      ) {
         nodes {
           id
           frontmatter {
@@ -233,24 +249,38 @@ const createArchives = async ({ graphql, actions: { createPage } }) => {
           }
         }
       }
-    }`)
+    }
+  `)
 
   const groups = _.chain(result.data.allMarkdownRemark.nodes)
-    .map(o => ({ id: o.id, date: o.fields.date, title: o.frontmatter.title, path: o.fields.slug }))
-    .groupBy(o => DateTime.fromISO(o.date).year)
+    .map((o) => ({
+      id: o.id,
+      date: o.fields.date,
+      title: o.frontmatter.title,
+      path: o.fields.slug,
+    }))
+    .groupBy((o) => DateTime.fromISO(o.date).year)
     .entries()
     .orderBy([0], 'desc')
-    .reduce((arr, [year, list]) => arr.concat({ year, groupName: `${year} (${list.length})`, list }), [])
+    .reduce(
+      (arr, [year, list]) =>
+        arr.concat({
+          year,
+          groupName: `${year} (${list.length})`,
+          list,
+        }),
+      []
+    )
     .value()
 
   createPage({
     path: '/archives',
     component: resolve('./src/templates/archives.jsx'),
-    context: { tags, categories, groups }
+    context: { tags, categories, groups },
   })
 }
 
-exports.createPages = async args => {
+exports.createPages = async (args) => {
   await createEachPostAndPagedPosts(args)
   await createPages(args)
   await createArchives(args)

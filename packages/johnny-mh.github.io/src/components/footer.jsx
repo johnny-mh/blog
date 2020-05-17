@@ -53,7 +53,10 @@ const Footer = () => (
       </a>
     </div>
     <div>
-      <a href="https://github.com/johnny-mh" target="_blank" rel="noopener noreferrer">
+      <a
+        href="https://github.com/johnny-mh"
+        target="_blank"
+        rel="noopener noreferrer">
         <GithubIcon className="github" />
       </a>
       <a href="mailto://romz1212@gmail.com">

@@ -15,7 +15,10 @@ export const pageQuery = graphql`
 
 const PostTemplate = ({ data, pageContext }) => (
   <Layout>
-    <SEO title={data.markdownRemark.frontmatter.title} keywords={data.markdownRemark.frontmatter.tags} />
+    <SEO
+      title={data.markdownRemark.frontmatter.title}
+      keywords={data.markdownRemark.frontmatter.tags}
+    />
     <Post {...data.markdownRemark} />
     <Pager {...pageContext} font={'400 14px "Josefin Sans", sans-serif'} />
   </Layout>
@@ -23,9 +26,9 @@ const PostTemplate = ({ data, pageContext }) => (
 
 PostTemplate.propTypes = {
   data: PropTypes.shape({
-    markdownRemark: PropTypes.shape(postPropTypes)
+    markdownRemark: PropTypes.shape(postPropTypes),
   }),
-  pageContext: PropTypes.any
+  pageContext: PropTypes.any,
 }
 
 export default PostTemplate

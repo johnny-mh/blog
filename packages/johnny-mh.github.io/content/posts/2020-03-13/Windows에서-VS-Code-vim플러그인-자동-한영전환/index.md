@@ -3,6 +3,7 @@ title: Windows에서 VS Code vim플러그인 자동 한영전환
 categories: [development]
 tags: [vscode, autohotkey]
 ---
+
 ## CapsLock과 Control키 바꾸기
 
 처음에는 게임과 영화를 보기 위한 용도로 데스크탑을 조립했는데 이제는 개발도구로 사용하고 있다. Window는 터미널을 사용할 때의 제약이 많아 개발할때는 꺼렸는데 wsl의 등장으로 지금은 현업에서도 큰 불편 없이 사용할 수 있는 정도가 되었다.

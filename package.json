@@ -7,19 +7,15 @@
   "scripts": {
     "run:johnny": "cd packages/johnny-mh.github.io && yarn develop",
     "build:johnny": "cd packages/johnny-mh.github.io && yarn build",
-    "run:mnkim": "cd packages/mnkim.com && yarn develop"
+    "run:mnkim": "cd packages/mnkim.com && yarn develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\""
   },
   "dependencies": {},
   "devDependencies": {
-    "eslint": "^6.2.2",
+    "eslint": "^7.0.0",
+    "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.18.0",
-    "eslint-plugin-node": "^9.1.0",
-    "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-sort-imports-es6-autofix": "^0.5.0",
-    "eslint-plugin-standard": "^4.0.0",
     "lerna": "^3.21.0",
     "prettier": "^2.0.5"
   }

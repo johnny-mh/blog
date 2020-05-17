@@ -88,15 +88,14 @@ const PostList = ({ posts }) => (
             <Link to={post.fields.slug}>{post.frontmatter.title}</Link>
           </h4>
           <div className="meta">
-            <span>
-              {DateTime.fromISO(post.fields.date).toFormat('DDD')}
-            </span>
+            <span>{DateTime.fromISO(post.fields.date).toFormat('DDD')}</span>
             <span>
               <TimeIcon /> {post.timeToRead}분 소요
             </span>
             {post.frontmatter.updatedAt ? (
               <span className="updated">
-                ※ {DateTime.fromISO(post.frontmatter.updatedAt).toFormat('M/d')} 업데이트
+                ※ {DateTime.fromISO(post.frontmatter.updatedAt).toFormat('M/d')}{' '}
+                업데이트
               </span>
             ) : null}
           </div>
@@ -107,7 +106,7 @@ const PostList = ({ posts }) => (
 )
 
 PostList.propTypes = {
-  posts: PropTypes.arrayOf(PropTypes.shape({ node: PropTypes.any }))
+  posts: PropTypes.arrayOf(PropTypes.shape({ node: PropTypes.any })),
 }
 
 export default PostList

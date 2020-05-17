@@ -54,7 +54,7 @@ const StyledFeatured = styled.div`
 `
 
 const Featured = ({
-  frontmatter: { title, featuredImage, featuredImageCaption }
+  frontmatter: { title, featuredImage, featuredImageCaption },
 }) => {
   let featured = null
 
@@ -122,7 +122,7 @@ const PostHeader = ({ frontmatter, fields: { slug, date } }) => {
       <span>
         in{' '}
         {frontmatter.categories
-          .map(cat => (
+          .map((cat) => (
             <FadeLink to={'/post/category/' + cat} rel="tag" key={cat}>
               {cat}
             </FadeLink>
@@ -142,8 +142,7 @@ const PostHeader = ({ frontmatter, fields: { slug, date } }) => {
           <time
             className="published"
             dateTime={DateTime.fromISO(date).toFormat('DDD')}
-            itemProp="datePublished"
-          >
+            itemProp="datePublished">
             {DateTime.fromISO(date).toFormat('DDD')}
           </time>
         </span>
@@ -161,12 +160,12 @@ export const postPropTypes = {
     categories: PropTypes.arrayOf(PropTypes.string),
     tags: PropTypes.arrayOf(PropTypes.string),
     featuredImage: PropTypes.any,
-    featuredImageCaption: PropTypes.string
+    featuredImageCaption: PropTypes.string,
   }),
   fields: PropTypes.shape({
     slug: PropTypes.string,
-    date: PropTypes.string
-  })
+    date: PropTypes.string,
+  }),
 }
 
 PostHeader.propTypes = postPropTypes
@@ -195,9 +194,9 @@ const StyledPostFooter = styled.footer`
   }
 `
 
-const PostFooter = props => {
+const PostFooter = (props) => {
   const {
-    frontmatter: { tags }
+    frontmatter: { tags },
   } = props
 
   if (!tags || (tags && isEmpty(tags))) {
@@ -210,7 +209,7 @@ const PostFooter = props => {
         <div className="tags">
           <TagIcon className="icon-tag" />
           {tags
-            .map(tag => (
+            .map((tag) => (
               <Link to={`/post/tag/${tag}`} rel="tag" key={tag}>
                 {tag}
               </Link>
@@ -232,13 +231,13 @@ const StyledPost = styled.div`
   }
 `
 
-const Post = props => {
+const Post = (props) => {
   const meta = []
 
   if (!isEmpty(props.frontmatter.tags)) {
     meta.push({
       name: 'keywords',
-      content: props.frontmatter.tags
+      content: props.frontmatter.tags,
     })
   }
 

@@ -92,7 +92,7 @@ const Archives = ({ pageContext: { tags, categories, groups } }) => {
         </div>
         <div className="block">
           <ul className="tagcloud">
-            {categories.map(category => (
+            {categories.map((category) => (
               <li
                 key={category.id}
                 style={{
@@ -100,10 +100,9 @@ const Archives = ({ pageContext: { tags, categories, groups } }) => {
                     category.totalCount >= 9
                       ? '1.8em'
                       : category.totalCount >= 5
-                        ? '1.4em'
-                        : '1em'
-                }}
-              >
+                      ? '1.4em'
+                      : '1em',
+                }}>
                 <Link to={'/post/category/' + category.name}>
                   {category.name}
                 </Link>
@@ -119,7 +118,7 @@ const Archives = ({ pageContext: { tags, categories, groups } }) => {
         </div>
         <div className="block">
           <ul className="tagcloud">
-            {tags.map(tag => (
+            {tags.map((tag) => (
               <li
                 key={tag.id}
                 style={{
@@ -127,10 +126,9 @@ const Archives = ({ pageContext: { tags, categories, groups } }) => {
                     tag.totalCount >= 9
                       ? '1.8em'
                       : tag.totalCount >= 5
-                        ? '1.4em'
-                        : '1em'
-                }}
-              >
+                      ? '1.4em'
+                      : '1em',
+                }}>
                 <Link to={'/post/tag/' + tag.name}>{tag.name}</Link>
               </li>
             ))}
@@ -144,11 +142,11 @@ const Archives = ({ pageContext: { tags, categories, groups } }) => {
         </div>
         <div className="block">
           <ul id="archives">
-            {groups.map(group => (
+            {groups.map((group) => (
               <li className="archive-list" key={group.year}>
                 <span className="group-name">{group.groupName}</span>
                 <ul className="archive-list-items">
-                  {group.list.map(item => (
+                  {group.list.map((item) => (
                     <li key={item.id}>
                       <Link to={item.path}>{item.title}</Link>
                       <span>{DateTime.fromISO(item.date).toFormat('DDD')}</span>
@@ -169,13 +167,13 @@ Archives.propTypes = {
     tags: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string,
-        totalCount: PropTypes.number
+        totalCount: PropTypes.number,
       })
     ),
     categories: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string,
-        totalCount: PropTypes.number
+        totalCount: PropTypes.number,
       })
     ),
     groups: PropTypes.arrayOf(
@@ -187,12 +185,12 @@ Archives.propTypes = {
             id: PropTypes.string,
             date: PropTypes.string,
             title: PropTypes.string,
-            path: PropTypes.string
+            path: PropTypes.string,
           })
-        )
+        ),
       })
-    )
-  })
+    ),
+  }),
 }
 
 export default Archives

@@ -35,12 +35,12 @@ const PostsTemplate = ({ data, pageContext }) => (
 PostsTemplate.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array
-    })
+      edges: PropTypes.array,
+    }),
   }),
   pageContext: PropTypes.shape({
-    ids: PropTypes.arrayOf(PropTypes.string)
-  })
+    ids: PropTypes.arrayOf(PropTypes.string),
+  }),
 }
 
 export default PostsTemplate

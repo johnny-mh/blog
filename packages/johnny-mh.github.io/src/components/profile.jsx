@@ -64,8 +64,8 @@ const StyledProfile = styled.div`
 const Profile = () => {
   const {
     file: {
-      childImageSharp: { fluid }
-    }
+      childImageSharp: { fluid },
+    },
   } = useStaticQuery(graphql`
     {
       file(name: { eq: "profile" }) {
@@ -89,7 +89,7 @@ const Profile = () => {
         <h1>안녕하세요! FE개발자 김민형입니다</h1>
         <div className="tags">
           {['JavaScript', 'Angular', 'React', 'NodeJS']
-            .map(str => <span key={str}>{str}</span>)
+            .map((str) => <span key={str}>{str}</span>)
             .reduce((prev, curr) => [prev, curr])}
         </div>
         <div>

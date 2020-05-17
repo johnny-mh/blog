@@ -22,7 +22,12 @@ export const pageQuery = graphql`
   }
 `
 
-const PostsTemplate = ({ data: { allMarkdownRemark: { edges: posts } }, pageContext }) => (
+const PostsTemplate = ({
+  data: {
+    allMarkdownRemark: { edges: posts },
+  },
+  pageContext,
+}) => (
   <Layout>
     <SEO title="blog" />
     <PostList posts={posts} />
@@ -33,10 +38,10 @@ const PostsTemplate = ({ data: { allMarkdownRemark: { edges: posts } }, pageCont
 PostsTemplate.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array
-    })
+      edges: PropTypes.array,
+    }),
   }),
-  pageContext: PropTypes.any
+  pageContext: PropTypes.any,
 }
 
 export default PostsTemplate

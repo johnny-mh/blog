@@ -79,13 +79,13 @@ const StyledPost = styled.article`
   }
 `
 
-const Post = props => {
+const Post = (props) => {
   const meta = []
 
   if (!isEmpty(props.frontmatter.tags)) {
     meta.push({
       name: 'keywords',
-      content: props.frontmatter.tags
+      content: props.frontmatter.tags,
     })
   }
 
@@ -103,7 +103,7 @@ const Post = props => {
           <span className="categories">
             in{' '}
             {props.frontmatter.categories
-              .map(cat => (
+              .map((cat) => (
                 <Link to={'/post/category/' + cat} rel="tag" key={cat}>
                   {cat}
                 </Link>
@@ -114,7 +114,7 @@ const Post = props => {
         <div className="tags">
           <TagIcon className="icon-tag" />
           {props.frontmatter.tags
-            .map(tag => (
+            .map((tag) => (
               <Link to={`/post/tag/${tag}`} rel="tag" key={tag}>
                 {tag}
               </Link>
@@ -124,8 +124,7 @@ const Post = props => {
       </header>
       <div
         className="markdown-content"
-        dangerouslySetInnerHTML={{ __html: props.html }}
-      ></div>
+        dangerouslySetInnerHTML={{ __html: props.html }}></div>
     </StyledPost>
   )
 }
@@ -136,19 +135,19 @@ export const postPropTypes = {
   frontmatter: PropTypes.shape({
     title: PropTypes.string,
     categories: PropTypes.arrayOf(PropTypes.string),
-    tags: PropTypes.arrayOf(PropTypes.string)
+    tags: PropTypes.arrayOf(PropTypes.string),
   }),
   fields: PropTypes.shape({
     slug: PropTypes.string,
     date: PropTypes.string,
-    sortDate: PropTypes.string
+    sortDate: PropTypes.string,
   }),
   headings: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string,
-      depth: PropTypes.number
+      depth: PropTypes.number,
     })
-  )
+  ),
 }
 
 Post.propTypes = postPropTypes

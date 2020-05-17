@@ -3,6 +3,7 @@ title: 좋은 코드를 작성하기 위한 생각들
 categories: [development]
 tags: [refactoring]
 ---
+
 신입땐 명세를 만족하는 코드를 빠르게 작성하는게 최고인 줄만 알았다.
 
 하지만 5년차쯤 되었을 때 이 생각에 문제가 있다는 것을 깨달았다.
@@ -52,7 +53,7 @@ tags: [refactoring]
 function deleteNodes(path, pattern) {
   for (const dirent of fs.opendirSync(path)) {
     if (dirent.name.match(pattern)) {
-      fs.unlinkSync(dirent);
+      fs.unlinkSync(dirent)
     }
   }
 }
@@ -65,7 +66,7 @@ function deleteNodes(path, pattern) {
  * path의 하위 노드들을 조회함
  */
 function getNodes(path) {
-  return fs.opendirSync(path);
+  return fs.opendirSync(path)
 }
 
 /**
@@ -73,7 +74,7 @@ function getNodes(path) {
  */
 function deleteIfMatched(node, pattern) {
   if (node.name.match(pattern)) {
-    fs.unlinkSync(node);
+    fs.unlinkSync(node)
   }
 }
 
@@ -82,7 +83,7 @@ function deleteIfMatched(node, pattern) {
  */
 function deleteNodes(path, pattern) {
   for (const node of getNodes(path)) {
-    deleteIfMatched(node, pattern);
+    deleteIfMatched(node, pattern)
   }
 }
 ```
@@ -90,13 +91,13 @@ function deleteNodes(path, pattern) {
 위와 같은 방식의 리펙토링을 하면 다음과 같은 장점이 있다.
 
 1. 가독성
-    - *리펙토링 이전:* 표현식과 문이 섞여 코드가 한 눈에 들어오지 않는다.
-    - *리펙토링 이후:* 복잡한 식들이 적절한 이름의 메서드로 표현되어 마치 책을 읽는 것 처럼 코드가 읽힌다.
+   - _리펙토링 이전:_ 표현식과 문이 섞여 코드가 한 눈에 들어오지 않는다.
+   - _리펙토링 이후:_ 복잡한 식들이 적절한 이름의 메서드로 표현되어 마치 책을 읽는 것 처럼 코드가 읽힌다.
 2. 테스트 용이성
-    - *리펙토링 이전:* `deleteNodes`를 테스트하려면 한번에 여러 API Mock을 만들어야 하는 부담이 있다.
-    - *리펙토링 이후:* getNodes는 NodeJS의 API를 단순히 이용할 뿐이므로. 테스트하지 않아도 된다. 하나의 메서드에 섞여있던 테스트 포인트가 `deleteIfMatched`, `deleteNodes`로 나뉘었다. 그리고 각 메서드를 테스트하기 위한 Mock제공이 상대적으로 덜 부담스럽다.
+   - _리펙토링 이전:_ `deleteNodes`를 테스트하려면 한번에 여러 API Mock을 만들어야 하는 부담이 있다.
+   - _리펙토링 이후:_ getNodes는 NodeJS의 API를 단순히 이용할 뿐이므로. 테스트하지 않아도 된다. 하나의 메서드에 섞여있던 테스트 포인트가 `deleteIfMatched`, `deleteNodes`로 나뉘었다. 그리고 각 메서드를 테스트하기 위한 Mock제공이 상대적으로 덜 부담스럽다.
 3. 확장성
-    - *리펙토링 이전:* `copyNodes`를 추가해야 한다면 리펙토링 이전은 주요 로직을 복사하고 요구사항에 맞게 수정해야 한다. 이 경우 전체 코드량이 2배가 되므로 테스트 커버리지가 감소한다.
-    - *리펙토링 이후:* 비슷한 레벨의 `copyIfMatched` 함수와 `copyNodes`만 추가 구현하면 된다. 테스트 커버리지를 상대적으로 적게 감소시키며 코드를 확장할 수 있게 된다.
+   - _리펙토링 이전:_ `copyNodes`를 추가해야 한다면 리펙토링 이전은 주요 로직을 복사하고 요구사항에 맞게 수정해야 한다. 이 경우 전체 코드량이 2배가 되므로 테스트 커버리지가 감소한다.
+   - _리펙토링 이후:_ 비슷한 레벨의 `copyIfMatched` 함수와 `copyNodes`만 추가 구현하면 된다. 테스트 커버리지를 상대적으로 적게 감소시키며 코드를 확장할 수 있게 된다.
 
 ... 작성중입니다 ...
