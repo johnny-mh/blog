@@ -17,7 +17,7 @@ const PostTemplate = ({ data, pageContext }) => (
   <Layout>
     <SEO title={data.markdownRemark.frontmatter.title} keywords={data.markdownRemark.frontmatter.tags} />
     <Post {...data.markdownRemark} />
-    <Pager {...pageContext} />
+    <Pager {...pageContext} font={'400 14px "Josefin Sans", sans-serif'} />
   </Layout>
 )
 

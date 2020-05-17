@@ -16,8 +16,9 @@ const StyledArchives = styled.div`
   }
 
   h2 {
-    font-family: Montserrat, sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
     font-weight: 700;
+    margin: 0;
   }
 
   hr {
@@ -103,7 +104,7 @@ const Archives = ({ pageContext: { tags, categories, groups } }) => {
                         : '1em'
                 }}
               >
-                <Link to={'/blog/category/' + category.name}>
+                <Link to={'/post/category/' + category.name}>
                   {category.name}
                 </Link>
               </li>
@@ -130,7 +131,7 @@ const Archives = ({ pageContext: { tags, categories, groups } }) => {
                         : '1em'
                 }}
               >
-                <Link to={'/blog/tag/' + tag.name}>{tag.name}</Link>
+                <Link to={'/post/tag/' + tag.name}>{tag.name}</Link>
               </li>
             ))}
           </ul>

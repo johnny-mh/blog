@@ -6,4 +6,3 @@ import './src/styles/site.sass'
 import './src/styles/prism-vscodedark.css'
 import './src/styles/markdown-content.sass'
 import './src/styles/highlight.sass'
-/* eslint-enable */

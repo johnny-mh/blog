@@ -123,7 +123,7 @@ const PostHeader = ({ frontmatter, fields: { slug, date } }) => {
         in{' '}
         {frontmatter.categories
           .map(cat => (
-            <FadeLink to={'/blog/category/' + cat} rel="tag" key={cat}>
+            <FadeLink to={'/post/category/' + cat} rel="tag" key={cat}>
               {cat}
             </FadeLink>
           ))
@@ -211,7 +211,7 @@ const PostFooter = props => {
           <TagIcon className="icon-tag" />
           {tags
             .map(tag => (
-              <Link to={`/blog/tag/${tag}`} rel="tag" key={tag}>
+              <Link to={`/post/tag/${tag}`} rel="tag" key={tag}>
                 {tag}
               </Link>
             ))

@@ -99,7 +99,7 @@ const Header = ({ siteTitle }) => (
         <nav className="navigation">
           <ul>
             <li>
-              <FadeLink to="/blog">Blog</FadeLink>
+              <FadeLink to="/post">Post</FadeLink>
             </li>
             <li>
               <FadeLink to="/about">About</FadeLink>

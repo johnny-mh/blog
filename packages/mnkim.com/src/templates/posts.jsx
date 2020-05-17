@@ -28,7 +28,7 @@ const PostsTemplate = ({ data, pageContext }) => (
     {data.allMarkdownRemark.edges.map(({ node }) => (
       <Post {...node} key={node.id} />
     ))}
-    <Pager {...pageContext} />
+    <Pager {...pageContext} font={'400 14px "Josefin Sans", sans-serif'} />
   </Layout>
 )
 
