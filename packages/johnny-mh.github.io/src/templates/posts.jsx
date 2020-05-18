@@ -29,7 +29,7 @@ const PostsTemplate = ({
   pageContext,
 }) => (
   <Layout>
-    <SEO title="blog" />
+    <SEO title="post" />
     <PostList posts={posts} />
     <Pager {...pageContext} />
   </Layout>

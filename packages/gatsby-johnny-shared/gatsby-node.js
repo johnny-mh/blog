@@ -4,7 +4,7 @@ const { createFilePath } = require('gatsby-source-filesystem')
 const { DateTime } = require('luxon')
 const { paginate, createPagePerItem } = require('gatsby-awesome-pagination')
 
-const BLOG_POST_FILENAME_REGEX = /(\d{4})-(\d{2})-(\d{2})-(.+)\/$/
+const POST_FILENAME_REGEX = /(\d{4})-(\d{2})-(\d{2})-(.+)\/$/
 
 exports.onCreateNode = ({ node, actions: { createNodeField }, getNode }) => {
   if (node.internal.type !== 'MarkdownRemark') {
@@ -12,7 +12,7 @@ exports.onCreateNode = ({ node, actions: { createNodeField }, getNode }) => {
   }
 
   const slug = createFilePath({ node, getNode })
-  const match = BLOG_POST_FILENAME_REGEX.exec(slug)
+  const match = POST_FILENAME_REGEX.exec(slug)
 
   if (match !== null) {
     const [, year, month, day, filename] = match

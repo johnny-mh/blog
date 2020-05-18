@@ -24,7 +24,7 @@ export const pageQuery = graphql`
 
 const PostsTemplate = ({ data, pageContext }) => (
   <Layout>
-    <SEO title="blog" />
+    <SEO title="post" />
     {data.allMarkdownRemark.edges.map(({ node }) => (
       <Post {...node} key={node.id} />
     ))}
