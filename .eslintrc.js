@@ -39,5 +39,6 @@ module.exports = {
         memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
       },
     ],
+    'no-undef': 2,
   },
 }

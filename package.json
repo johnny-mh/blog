@@ -8,6 +8,7 @@
     "run:johnny": "cd packages/johnny-mh.github.io && yarn develop",
     "build:johnny": "cd packages/johnny-mh.github.io && yarn build",
     "run:mnkim": "cd packages/mnkim.com && yarn develop",
+    "build:mnkim": "cd packages/mnkim.com && yarn build",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\""
   },
   "dependencies": {},
