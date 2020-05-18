@@ -49,6 +49,7 @@ module.exports = ({ website }) => {
               resolve: 'gatsby-remark-images',
               options: { maxWidth: 1300, showCaptions: ['alt'] },
             },
+            'gatsby-remark-medium-zoom',
           ],
         },
       },
