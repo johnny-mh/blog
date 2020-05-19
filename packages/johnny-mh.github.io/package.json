@@ -14,7 +14,6 @@
     "gatsby-johnny-shared": "^1.0.0",
     "gatsby-link": "^2.4.2",
     "luxon": "^1.24.1",
-    "medium-zoom": "^1.0.5",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
