@@ -6,7 +6,9 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "start": "serve public/"
+    "start": "serve public/",
+    "preversion": "npm run build",
+    "version": "gh-pages -d public -r https://github.com/johnny-mh/johnny-mh.github.io.git"
   },
   "dependencies": {
     "gatsby": "^2.21.33",
@@ -18,5 +20,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "styled-components": "^5.1.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^2.2.0"
   }
 }
