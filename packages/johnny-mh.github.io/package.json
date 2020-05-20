@@ -1,6 +1,6 @@
 {
   "name": "johnny-mh.github.io",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "develop": "gatsby develop",
     "start": "serve public/",
     "preversion": "npm run build",
-    "version": "gh-pages -d public -b master -r https://github.com/johnny-mh/johnny-mh.github.io.git"
+    "version": "gh-pages -f -d public -b master -r https://github.com/johnny-mh/johnny-mh.github.io.git"
   },
   "dependencies": {
     "gatsby": "^2.21.33",
