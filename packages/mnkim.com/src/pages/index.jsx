@@ -1,10 +1,10 @@
-import { SEO } from 'gatsby-johnny-shared'
 import { graphql } from 'gatsby'
-import Post from '../components/post'
+import { SEO } from 'gatsby-johnny-shared'
 import PropTypes from 'prop-types'
 import React from 'react'
 
 import Layout from '../components/layout'
+import Post from '../components/post'
 
 export const query = graphql`
   {

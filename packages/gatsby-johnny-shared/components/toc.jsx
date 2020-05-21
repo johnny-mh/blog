@@ -1,10 +1,10 @@
-import { findIndex, head, last, throttle } from 'lodash'
 import { graphql } from 'gatsby'
+import { slug } from 'github-slugger'
+import { findIndex, head, last, throttle } from 'lodash'
 import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 import Sticky from 'react-stickynode'
 import scrollToElement from 'scroll-to-element'
-import slugger from 'github-slugger'
 import styled from 'styled-components'
 
 export const query = graphql`
@@ -78,7 +78,7 @@ const TOC = ({ headings }) => {
   }
   const headers = headings
     .filter(({ depth }) => depth < 3)
-    .map((h) => ({ ...h, slug: slugger.slug(h.value) }))
+    .map((h) => ({ ...h, slug: slug(h.value) }))
 
   useEffect(() => {
     const offsets = headers.map(({ slug }) =>
@@ -124,7 +124,7 @@ const TOC = ({ headings }) => {
                 key={idx}
                 style={{ paddingLeft: `${depth * 11}px` }}
                 className={currentIndex === idx ? 'active' : ''}>
-                <a data-idx={idx} href={`#${slugger.slug(value)}`}>
+                <a data-idx={idx} href={`#${slug(value)}`}>
                   {value}
                 </a>
               </li>

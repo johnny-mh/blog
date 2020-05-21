@@ -1,12 +1,13 @@
-import { SEO } from 'gatsby-johnny-shared'
 import { graphql } from 'gatsby'
+import { SEO } from 'gatsby-johnny-shared'
+import PropTypes from 'prop-types'
+import React from 'react'
+import styled from 'styled-components'
+
 import Layout from '../components/layout'
 import PostList from '../components/post-list'
 import Profile from '../components/profile'
-import PropTypes from 'prop-types'
-import React from 'react'
 import RxjsIcon from '../images/rxjs.svg'
-import styled from 'styled-components'
 
 export const query = graphql`
   {

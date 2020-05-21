@@ -1,8 +1,9 @@
-import { SEO } from 'gatsby-johnny-shared'
 import { graphql } from 'gatsby'
-import Layout from '../components/layout'
+import { SEO } from 'gatsby-johnny-shared'
 import PropTypes from 'prop-types'
 import React from 'react'
+
+import Layout from '../components/layout'
 
 export const pageQuery = graphql`
   query($id: String) {

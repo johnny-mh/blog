@@ -1,8 +1,9 @@
-import Footer from './footer'
-import Header from './header'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
+
+import Footer from './footer'
+import Header from './header'
 
 const StyledMain = styled.main`
   margin-top: 140px;

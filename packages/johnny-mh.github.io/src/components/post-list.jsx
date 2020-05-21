@@ -1,9 +1,10 @@
-import { DateTime } from 'luxon'
 import { Link, graphql } from 'gatsby'
+import { DateTime } from 'luxon'
 import PropTypes from 'prop-types'
 import React from 'react'
-import TimeIcon from '../images/time.svg'
 import styled from 'styled-components'
+
+import TimeIcon from '../images/time.svg'
 
 export const query = graphql`
   fragment PostList on MarkdownRemark {

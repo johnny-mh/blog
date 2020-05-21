@@ -1,7 +1,8 @@
 import { FadeLink } from 'gatsby-johnny-shared'
 import React, { useEffect, useState } from 'react'
-import logoBlack from '../images/black.png'
 import styled from 'styled-components'
+
+import logoBlack from '../images/black.png'
 
 const StyledHeader = styled.nav`
   position: fixed;

@@ -5,12 +5,13 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import { Footer } from './footer'
 import { graphql, useStaticQuery } from 'gatsby'
-import Header from './header'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
+
+import { Footer } from './footer'
+import Header from './header'
 
 const StyledLayout = styled.div`
   padding: 80px;

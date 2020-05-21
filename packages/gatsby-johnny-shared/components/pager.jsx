@@ -1,10 +1,10 @@
-import LeftIcon from '../images/left.svg'
-import RightIcon from '../images/right.svg'
-
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
+
+import LeftIcon from '../images/left.svg'
+import RightIcon from '../images/right.svg'
 
 const StyledPager = styled.nav`
   height: 56px;

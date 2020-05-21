@@ -1,6 +1,7 @@
-import RSSIcon from '../images/rss.svg'
 import React from 'react'
 import styled from 'styled-components'
+
+import RSSIcon from '../images/rss.svg'
 
 const StyledFooter = styled.footer`
   text-align: center;

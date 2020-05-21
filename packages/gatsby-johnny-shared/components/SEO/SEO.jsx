@@ -1,9 +1,10 @@
-import { Helmet } from 'react-helmet'
-import { graphql, useStaticQuery } from 'gatsby'
 import { useLocation } from '@reach/router'
-import Facebook from './facebook'
+import { graphql, useStaticQuery } from 'gatsby'
 import PropTypes from 'prop-types'
 import React from 'react'
+import { Helmet } from 'react-helmet'
+
+import Facebook from './facebook'
 import Twitter from './twitter'
 
 // Complete tutorial: https://www.gatsbyjs.org/docs/add-seo-component/

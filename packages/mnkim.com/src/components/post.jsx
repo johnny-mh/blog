@@ -1,12 +1,13 @@
-import { DateTime } from 'luxon'
-import { FadeLink } from 'gatsby-johnny-shared'
 import { Link, graphql } from 'gatsby'
-import { isEmpty, isNil } from 'lodash'
 import Img from 'gatsby-image'
+import { FadeLink } from 'gatsby-johnny-shared'
+import { isEmpty, isNil } from 'lodash'
+import { DateTime } from 'luxon'
 import PropTypes from 'prop-types'
 import React from 'react'
-import TagIcon from '../images/tag.svg'
 import styled, { css } from 'styled-components'
+
+import TagIcon from '../images/tag.svg'
 
 export const query = graphql`
   fragment Post on MarkdownRemark {

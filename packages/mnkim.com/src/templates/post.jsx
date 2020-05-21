@@ -1,9 +1,10 @@
-import { Pager, SEO } from 'gatsby-johnny-shared'
 import { graphql } from 'gatsby'
-import Layout from '../components/layout'
-import Post, { postPropTypes } from '../components/post'
+import { Pager, SEO } from 'gatsby-johnny-shared'
 import PropTypes from 'prop-types'
 import React from 'react'
+
+import Layout from '../components/layout'
+import Post, { postPropTypes } from '../components/post'
 
 export const pageQuery = graphql`
   query($pageId: String!) {

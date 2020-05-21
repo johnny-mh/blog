@@ -16,7 +16,7 @@ module.exports = {
     ecmaVersion: 11,
     sourceType: 'module',
   },
-  plugins: ['react', 'sort-imports-es6-autofix'],
+  plugins: ['react'],
   rules: {
     'max-len': [
       2,
@@ -29,14 +29,6 @@ module.exports = {
         ignoreStrings: true,
         ignoreTemplateLiterals: true,
         ignoreRegExpLiterals: true,
-      },
-    ],
-    'sort-imports-es6-autofix/sort-imports-es6': [
-      2,
-      {
-        ignoreCase: false,
-        ignoreMemberSort: false,
-        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
       },
     ],
     'no-undef': 2,

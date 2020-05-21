@@ -1,7 +1,8 @@
 import { FadeLink, SEO } from 'gatsby-johnny-shared'
-import Layout from '../components/layout'
 import React from 'react'
 import styled from 'styled-components'
+
+import Layout from '../components/layout'
 
 const StyledNotFound = styled.div`
   text-align: center;

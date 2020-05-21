@@ -1,10 +1,11 @@
-import { DateTime } from 'luxon'
 import { Link } from 'gatsby'
 import { SEO } from 'gatsby-johnny-shared'
-import Layout from '../components/layout'
+import { DateTime } from 'luxon'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
+
+import Layout from '../components/layout'
 
 const StyledArchives = styled.div`
   max-width: 800px;

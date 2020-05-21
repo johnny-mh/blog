@@ -1,7 +1,8 @@
-import GithubIcon from '../images/github.svg'
-import MailIcon from '../images/mail.svg'
 import React from 'react'
 import styled from 'styled-components'
+
+import GithubIcon from '../images/github.svg'
+import MailIcon from '../images/mail.svg'
 
 const StyledFooter = styled.footer`
   margin: 60px auto;

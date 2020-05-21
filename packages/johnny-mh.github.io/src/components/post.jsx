@@ -1,11 +1,11 @@
-import { DateTime } from 'luxon'
 import { Link, graphql } from 'gatsby'
+import { TOC } from 'gatsby-johnny-shared'
 import { isEmpty } from 'lodash'
+import { DateTime } from 'luxon'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 
-import { TOC } from 'gatsby-johnny-shared'
 import TagIcon from '../images/tag.svg'
 
 export const query = graphql`
