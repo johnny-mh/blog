@@ -10,10 +10,13 @@
     "clean:johnny": "cd packages/johnny-mh.github.io && gatsby clean",
     "run:mnkim": "cd packages/mnkim.com && yarn develop",
     "build:mnkim": "cd packages/mnkim.com && yarn build",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\""
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "commit": "npx git-cz"
   },
   "dependencies": {},
   "devDependencies": {
+    "commitizen": "^4.1.2",
+    "cz-conventional-changelog": "^3.2.0",
     "eslint": "^7.0.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^6.11.0",
@@ -26,6 +29,11 @@
   "importSort": {
     ".js, .jsx, .ts, .tsx": {
       "style": "module"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
     }
   }
 }
