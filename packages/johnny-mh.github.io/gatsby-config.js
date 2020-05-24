@@ -5,18 +5,11 @@ module.exports = {
       options: { website: require('./website') },
     },
     {
-      resolve: 'gatsby-plugin-prefetch-google-fonts',
+      resolve: 'gatsby-plugin-web-font-loader',
       options: {
-        fonts: [
-          {
-            family: 'Montserrat',
-            variants: ['400', '600'],
-          },
-          {
-            family: 'Noto Sans KR',
-            variants: ['400', '700'],
-          },
-        ],
+        google: {
+          families: ['Noto Sans KR:400,700', 'Montserrat:400,600:latin'],
+        },
       },
     },
   ],

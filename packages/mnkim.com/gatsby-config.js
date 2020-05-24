@@ -5,21 +5,15 @@ module.exports = {
       options: { website: require('./website') },
     },
     {
-      resolve: 'gatsby-plugin-prefetch-google-fonts',
+      resolve: 'gatsby-plugin-web-font-loader',
       options: {
-        fonts: [
-          {
-            family: 'Josefin Sans',
-          },
-          {
-            family: 'Montserrat',
-            variants: ['400', '700'],
-          },
-          {
-            family: 'Nanum Myeongjo',
-            variants: ['400', '700'],
-          },
-        ],
+        google: {
+          families: [
+            'Nanum Myeongjo:400,700',
+            'Josefin Sans:400:latin',
+            'Montserrat:200,400:latin',
+          ],
+        },
       },
     },
   ],

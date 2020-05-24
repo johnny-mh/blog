@@ -22,6 +22,7 @@
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-react": "^7.20.0",
+    "gh-pages": "^2.2.0",
     "import-sort-style-module": "^6.0.0",
     "lerna": "^3.21.0",
     "prettier": "^2.0.5",

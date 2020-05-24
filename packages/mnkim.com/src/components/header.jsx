@@ -30,7 +30,7 @@ const StyledHeader = styled.header`
     line-height: 1.8em;
     text-transform: uppercase;
     font-family: Montserrat, sans-serif;
-    font-weight: 100;
+    font-weight: 400;
     font-size: 8px;
 
     a:hover {
@@ -63,8 +63,7 @@ const StyledHeader = styled.header`
           padding: 0 0.8em;
           text-align: center;
           text-decoration: none;
-          font-family: 'Josefin Sans', sans-serif;
-          font-weight: 400;
+          font-family: 'Josefin Sans', sans-serif !important;
           font-size: 14px;
           letter-spacing: 0.95px;
 
