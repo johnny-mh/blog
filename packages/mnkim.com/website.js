@@ -10,7 +10,7 @@ module.exports = {
   ogLanguage: 'ko_KR', // Facebook Language
 
   // JSONLD / Manifest
-  favicon: 'packages/mnkim.com/src/images/favicon.png', // Used for manifest favicon generation
+  favicon: 'src/images/favicon.png', // Used for manifest favicon generation
   shortName: 'MN.KIM', // shortname for manifest. MUST be shorter than 12 characters
   author: 'johnny.kim', // Author for schemaORGJSONLD
   themeColor: '#FFFFFF',
