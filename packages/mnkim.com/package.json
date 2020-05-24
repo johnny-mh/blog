@@ -6,7 +6,9 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "start": "serve public/"
+    "start": "serve public/",
+    "preversion": "npm run build",
+    "postversion": "cd ../.. && amplify publish"
   },
   "dependencies": {
     "gatsby": "^2.21.33",
