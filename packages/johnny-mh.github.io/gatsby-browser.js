@@ -1,4 +1,3 @@
-/* eslint-disable */
 import './src/styles/reset.sass'
 import './src/styles/util.sass'
 import './src/styles/font.css'

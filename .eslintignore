@@ -1,2 +1,4 @@
+amplify/
 public/
 .cache/
+aws-exports.js

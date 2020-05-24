@@ -10,6 +10,7 @@
     "clean:johnny": "cd packages/johnny-mh.github.io && gatsby clean",
     "run:mnkim": "cd packages/mnkim.com && yarn develop",
     "build:mnkim": "cd packages/mnkim.com && yarn build",
+    "clean:mnkim": "cd packages/mnkim.com && gatsby clean",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "commit": "npx git-cz"
   },

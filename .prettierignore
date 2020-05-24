@@ -1,3 +1,5 @@
+amplify/
 .yarn/
 .cache/
 public/
+aws-exports.js
