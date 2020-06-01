@@ -22,7 +22,8 @@ module.exports = {
       resolve: 'gatsby-plugin-s3',
       options: {
         bucketName: 'mnkim.com',
-        acl: null,
+        protocol: 'https',
+        hostname: 'mnkim.com',
       },
     },
   ],
