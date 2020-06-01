@@ -8,7 +8,7 @@
     "develop": "gatsby develop",
     "start": "serve public/",
     "preversion": "npm run build",
-    "postversion": "gatsby-plugin-s3 deploy"
+    "postversion": "npx -n \"-r dotenv/config\" gatsby-plugin-s3 deploy --yes"
   },
   "dependencies": {
     "gatsby": "^2.21.33",

@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   plugins: [
     {
@@ -18,7 +20,10 @@ module.exports = {
     },
     {
       resolve: 'gatsby-plugin-s3',
-      options: { bucketName: 'mnkim.com' },
+      options: {
+        bucketName: 'mnkim.com',
+        acl: null,
+      },
     },
   ],
 }
