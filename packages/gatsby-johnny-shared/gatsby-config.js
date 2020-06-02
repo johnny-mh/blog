@@ -47,7 +47,7 @@ module.exports = ({ website }) => {
             'gatsby-remark-autolink-headers',
             {
               resolve: 'gatsby-remark-images',
-              options: { maxWidth: 1300, showCaptions: ['alt'] },
+              options: { maxWidth: 1366, showCaptions: ['alt'] },
             },
           ],
         },
