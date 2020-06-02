@@ -2,7 +2,6 @@
 title: 블로그들 Gatsby로 전환 후기
 categories: [development]
 tags: [Gatsby, React]
-draft: true
 ---
 
 # 전환 배경
