@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.3](https://github.com/johnny-mh/blog/compare/v1.2.2...v1.2.3) (2020-06-02)
+
+
+### Bug Fixes
+
+* **johnny-mh.github.io:** aWS S3 CloudFront로 전환 글 작성 ([98a23e2](https://github.com/johnny-mh/blog/commit/98a23e2439464bfcb2bb0ec33fe2b0006fe9de0e))
+
+
+
+
+
 ## [1.2.2](https://github.com/johnny-mh/blog/compare/v1.2.1...v1.2.2) (2020-06-01)
 
 **Note:** Version bump only for package root

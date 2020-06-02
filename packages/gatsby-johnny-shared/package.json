@@ -1,6 +1,6 @@
 {
   "name": "gatsby-johnny-shared",
-  "version": "1.0.1",
+  "version": "1.2.3",
   "license": "MIT",
   "main": "index.js",
   "dependencies": {
