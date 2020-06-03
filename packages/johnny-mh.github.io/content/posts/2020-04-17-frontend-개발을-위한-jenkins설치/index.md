@@ -2,27 +2,31 @@
 title: FrontEnd 개발을 위한 Jenkins CI서버 세팅하기
 categories: [development]
 tags: [jenkins]
+updatedAt: 2020-06-03
 ---
 
-> CentOS 7.7 기준으로 작성
+CentOS 7.7 기준으로 작성하였으며, Master, Slave 노드 공통으로 해야하는 일과 각각 해야하는 일들로 나누어 정리했다
 
 # Master, Slave 공통
 
-패키지 업데이트, JDK설치
+JDK설치, git 2.x 설치
+
+> lerna처럼 근래에 나온 도구들은 git 2.x이상을 요구하는 경우가 있으므로 업데이트 한다
 
 ```bash
 sudo yum update
+sudo rpm -Uvh http://opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-2.noarch.rpm
 sudo yum install -y java-1.8.0-openjdk-devel git
 ```
 
-사내망일 경우 프록시 설정 필요
+사내망일 경우 프록시를 설정해야 할 수 있다
 
 ```bash
 vim .bash_profile
 
 # 맨밑에 아래 내용 추가
 export http_proxy={{프록시 서버 주소}}
-export HTTP_PROXY=$http_proxy
+export HTTP_PROXY=$http_prox
 export https_proxy=$http_proxy
 export HTTPS_PROXY=$http_proxy
 export no_proxy="localhost,127.0.0.1"
@@ -33,9 +37,9 @@ export NO_PROXY=$no_proxy
 
 ## Jenkins 설치 및 포트 설정
 
-[https://linuxize.com/post/how-to-install-jenkins-on-centos-7](https://linuxize.com/post/how-to-install-jenkins-on-centos-7) 참고.
+[https://linuxize.com/post/how-to-install-jenkins-on-centos-7](https://linuxize.com/post/how-to-install-jenkins-on-centos-7)를 참고하여 설치한다
 
-80포트로 사용할 수 있도록 설정
+만약 서버에 80포트가 관리자 권한으로 막혀 있다면 아래 명령으로 우회 사용할 수 있도록 한다
 
 ```bash
 sudo -i
@@ -43,7 +47,7 @@ iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 80
 iptables-save
 ```
 
-jenkins계정 패스워드 삭제 및 로그인 가능하게 하기
+jenkins계정의 패스워드 삭제 및 로그인 가능하게 하기
 
 ```bash
 sudo -i
@@ -53,7 +57,7 @@ sudo vim /etc/passwd
 # jenkins 라인 마지막 /bin/false를 /bin/bash로 변경
 ```
 
-## 인증 키 설정
+## github 액세스용 인증 키 생성
 
 ```bash
 su - jenkins
@@ -64,33 +68,39 @@ ssh-keygen
 # id_rsa, id_rsa.pub생성됨
 ```
 
-github.com 로그인 후 `Settings > Developer settings > Personal access tokens` 에서 새 토큰을 등록하고 이 값을 Jenkins 의 Crediential 에 Secret text 로 등록해둔다
+github.com 로그인 후 **Settings** > **Developer settings** > **Personal access tokens** 에서 새 토큰을 등록하고 해당 값을 복사한다
+
+Jenkins 설정 중 Crediential 에서 Secret text 로 해당 값을 등록해둔다. 등록할 때 description을 잘 적어서 다른 키들과 혼동하지 않게 한다 나는 **'Personal Access Token'**으로 적었다
 
 ## 플러그인 설치 및 설정
 
 아래 플러그인들 설치
 
 ```text
-NodeJS, AnsiColor, GitHub Pull Request Builder, Publish Over SSH
+NodeJS, AnsiColor, GitHub Pull Request Builder
 ```
 
-`Jenkins 관리 > Global Tool Configuration > NodeJS` 항목 추가
+**Jenkins 관리** > **Global Tool Configuration** > **NodeJS** 항목 추가한다. 버전은 어떤것이든 상관없으나 가능하면 LTS (Long Term Support)버전을 선택한다
 
 ```text
 Name: NodeJS 10.15.3
 Version: NodeJS 10.15.3
-Global npm packages to install: typescript@3.5.3 ts-node@8.8.2 @angular/cli@8.2.0 @sentry/cli@1.52.1
+Global npm packages to install: typescript@3.5.3 ts-node@8.8.2 @angular/cli@8.2.0 @sentry/cli@1.52.1 yarn lerna
 ```
 
-각 전역 패키지들의 버전을 명시해 두는게 좋음
+위에는 Angular프로젝트 빌드 및 배포용으로 적었다. 각 전역 패키지들의 버전을 명시적으로 적어두면 좋다 빌드 시점에 매번 설치하기 때문
 
-사내 npm을 사용중이라면 `Jenkins 관리 > Managed Files > Npm config file` 을 추가하여 설정.
+private npm을 사용중이라면 주소를 **Jenkins 관리** > **Managed Files** > **Npm config file** 을 추가하여 설정한다
+
+```text
+registry=<private npm url>
+```
 
 ## 환경변수 설정
 
-`Jenkins 관리 > 시스템 설정 > Global properties > Environment variables` 에 아래 값들 추가
+**Jenkins 관리** > **시스템 설정** > **Global properties** > **Environment variables** 에 아래 값들을 추가한다
 
-위의 두 값은 언어 설정때문에 필요하고. 아래 프록시 설정은 해당할때만 추가한다
+위의 두 값은 빌드 콘솔이 출력될 때 유니코드 문자열들을 제대로 보기 위함이고. 아래 프록시 설정은 사내망 등 해당할때만 추가한다
 
 ```text
 이름: JAVA_TOOLS_OPTIONS
@@ -128,5 +138,6 @@ mkdir .ssh
 cd .ssh
 vim authorized_keys
 
-# Master 노드의 인증서 설정에서 만든 id_rsa.pub의 컨텐츠를 붙여넣고 저장
+# Master 노드의 인증서 설정에서 만든 id_rsa.pub의 내용을 복사하여 붙여넣고 저장한다.
+# 만약 기존에 파일이 있다면 맨 아랫줄에 추가하면 된다
 ```
