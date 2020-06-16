@@ -37,7 +37,10 @@ module.exports = ({ website }) => {
       'gatsby-plugin-sass',
       'gatsby-plugin-styled-components',
       'gatsby-plugin-transition-link',
-      'gatsby-plugin-sharp',
+      {
+        resolve: 'gatsby-plugin-sharp',
+        options: { stripMetadata: true, defaultQuality: 85 },
+      },
       'gatsby-transformer-sharp',
       {
         resolve: 'gatsby-transformer-remark',
@@ -47,7 +50,7 @@ module.exports = ({ website }) => {
             'gatsby-remark-autolink-headers',
             {
               resolve: 'gatsby-remark-images',
-              options: { maxWidth: 1366, showCaptions: ['alt'] },
+              options: { maxWidth: 1366, showCaptions: ['alt'], quality: 85 },
             },
           ],
         },
