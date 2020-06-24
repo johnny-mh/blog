@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/johnny-mh/blog/compare/v1.2.5...v1.3.0) (2020-06-24)
+
+
+### Features
+
+* **johnny-mh.github.io:** 모노레포 도입 검토 관련 포스트 작성 ([498ffcf](https://github.com/johnny-mh/blog/commit/498ffcfb25ffabc9a0e3f7170c16c74f9ee2e0ed))
+
+
+
+
+
 ## [1.3.0](https://github.com/johnny-mh/blog/compare/v1.2.3...v1.3.0) (2020-06-22)
 
 ### Features
