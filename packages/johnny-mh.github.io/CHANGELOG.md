@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.1](https://github.com/johnny-mh/blog/compare/v1.3.0...v1.3.1) (2020-06-28)
+
+
+### Bug Fixes
+
+* **johnny-mh.github.io:** monorepo적용검토 글 보완 ([57c7776](https://github.com/johnny-mh/blog/commit/57c7776ed212dddccfb17e7aa71dbe2f4fffa9d7))
+
+
+
+
+
 # [1.3.0](https://github.com/johnny-mh/blog/compare/v1.2.5...v1.3.0) (2020-06-24)
 
 
