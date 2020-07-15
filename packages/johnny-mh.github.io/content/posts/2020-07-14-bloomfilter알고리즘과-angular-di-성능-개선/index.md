@@ -1,5 +1,5 @@
 ---
-title: Bloom Filter알고리즘과 Angular의 Dependency Injection 성능 개선
+title: Bloom Filter알고리즘과 Angular DI 성능 개선
 categories: [development]
 tags: [bloomfilter, algorithm, angular]
 featuredImage: ./cover.jpg
