@@ -1,5 +1,5 @@
 import { Link, graphql } from 'gatsby'
-import { TOC } from 'gatsby-johnny-shared'
+import { SEO, TOC } from 'gatsby-johnny-shared'
 import { isEmpty } from 'lodash'
 import { DateTime } from 'luxon'
 import PropTypes from 'prop-types'
@@ -16,6 +16,9 @@ export const query = graphql`
       categories
       tags
       title
+      featuredImage {
+        publicURL
+      }
     }
     fields {
       slug
@@ -81,17 +84,25 @@ const StyledPost = styled.article`
 
 const Post = (props) => {
   const meta = []
+  const { frontmatter } = props
 
-  if (!isEmpty(props.frontmatter.tags)) {
+  if (!isEmpty(frontmatter.tags)) {
     meta.push({
       name: 'keywords',
-      content: props.frontmatter.tags,
+      content: frontmatter.tags,
     })
+  }
+
+  let featuredImage = null
+
+  if (frontmatter.featuredImage && frontmatter.featuredImage.publicURL) {
+    featuredImage = frontmatter.featuredImage.publicURL
   }
 
   return (
     <StyledPost>
       <TOC headings={props.headings} />
+      {featuredImage ? <SEO image={featuredImage} /> : null}
       <header>
         <h1>{props.frontmatter.title}</h1>
         <div className="post-meta">
@@ -136,6 +147,9 @@ export const postPropTypes = {
     title: PropTypes.string,
     categories: PropTypes.arrayOf(PropTypes.string),
     tags: PropTypes.arrayOf(PropTypes.string),
+    featuredImage: PropTypes.shape({
+      publicURL: PropTypes.string,
+    }),
   }),
   fields: PropTypes.shape({
     slug: PropTypes.string,
