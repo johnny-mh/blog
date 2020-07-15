@@ -2,6 +2,7 @@
 title: Bloom Filter알고리즘과 Angular의 Dependency Injection 성능 개선
 categories: [development]
 tags: [bloomfilter, algorithm, angular]
+featuredImage: ./cover.jpg
 ---
 
 # Bloom Filter
@@ -14,7 +15,7 @@ Bloom Filter는 어떤 Set안에 특정 값이 존재하는지 여부를 빠르�
 
 ## 동작 원리
 
-이 알고리즘은 요소들이 담길 공간, 필터, 해시 함수가 필요하다. 공간은 앞서 언급한 대로 회원 DB등 특정 값이 존재하는지 검사할 집합이다. 필터는 0, 1을 표현할 수 있는 자료형의 배열이다. 해시 함수는 특정 값을 넣었을 때 항상 똑같은 길이의 값을 반환하는 함수를 말한다.
+이 알고리즘은 요소들이 담길 **공간**, **필터**, **해시 함수**가 필요하다. **공간**은 앞서 언급한 대로 회원 DB등 특정 값이 존재하는지 검사할 집합이다. **필터**는 0, 1을 표현할 수 있는 Bit의 배열이다. **해시 함수**는 특정 값을 넣었을 때 항상 똑같은 길이의 값을 반환하는 함수를 말한다.
 
 설명을 위해 공간은 문자열 배열, 필터는 6칸을 사용하고. 해시는 길이 6의 값을 출력하는 **hashA**, **hashB** 를 사용한다고 하자. 그리고 코드는 이해를 돕기 위해 비트를 나열한 수도 코드를 사용한다.
 
@@ -145,7 +146,8 @@ class HelloComponent {
 ```ts
 export function bloomHasToken(
   // 컴포넌트 ID의 해시 값 (입력값)
-  // AppComponent는 boostrap되므로 처음으로 처리되기에 값이 0이다
+  // 위의 데모 코드에서 AppComponent는 처음으로 처리되기에 값이 0이다.
+  // 따지고 보면 Provider의 종류가 공식에서 (n)이 된다.
   bloomHash: number,
   // JS의 비트연산은 32비트라 256짜리 필터를 담을 수 없어 필터를 32비트씩 8개로 쪼갠 것으로 보인다
   injectorIndex: number,
