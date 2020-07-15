@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.6](https://github.com/johnny-mh/blog/compare/mnkim.com@1.0.5...mnkim.com@1.2.6) (2020-07-15)
+
+
+
+## 1.2.5 (2020-06-16)
+
+
+### Bug Fixes
+
+* **mnkim.com:** 글쓰기! ([e154643](https://github.com/johnny-mh/blog/commit/e1546437c33c67f4efa441f406055038a782aff6))
+
+
+
+## 1.2.4 (2020-06-02)
+
+
+
+## 1.2.3 (2020-06-02)
+
+
+
+## 1.2.2 (2020-06-01)
+
+
+
+## 1.2.1 (2020-06-01)
+
+
+
+# 1.2.0 (2020-05-26)
+
+
+
+
+
 ## [1.2.4](https://github.com/johnny-mh/blog/compare/v1.2.3...v1.2.4) (2020-06-02)
 
 **Note:** Version bump only for package mnkim.com
