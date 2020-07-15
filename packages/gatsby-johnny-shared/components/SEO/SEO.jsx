@@ -8,7 +8,7 @@ import Facebook from './facebook'
 import Twitter from './twitter'
 
 // Complete tutorial: https://www.gatsbyjs.org/docs/add-seo-component/
-const SEO = ({ title, desc, banner, article, node, keywords }) => {
+const SEO = ({ title, desc, banner, article, node, keywords, image }) => {
   const { pathname } = useLocation()
   const { site } = useStaticQuery(graphql`
     {
@@ -49,7 +49,7 @@ const SEO = ({ title, desc, banner, article, node, keywords }) => {
   const seo = {
     title: title || defaultTitle,
     description: desc || defaultDescription,
-    image: `${siteUrl}${banner || defaultBanner}`,
+    image: `${siteUrl}${image || banner || defaultBanner}`,
     url: `${siteUrl}${pathname || ''}`,
   }
 
@@ -215,6 +215,7 @@ SEO.propTypes = {
   article: PropTypes.bool,
   node: PropTypes.object,
   keywords: PropTypes.arrayOf(PropTypes.string),
+  image: PropTypes.string,
 }
 
 SEO.defaultProps = {
@@ -224,4 +225,5 @@ SEO.defaultProps = {
   pathname: null,
   article: false,
   node: null,
+  image: null,
 }
