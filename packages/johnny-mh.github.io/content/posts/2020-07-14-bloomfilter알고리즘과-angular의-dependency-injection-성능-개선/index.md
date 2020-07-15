@@ -89,11 +89,13 @@ h = h1 | h2 // 001010
 !!(filter & h) // 001010 => true
 ```
 
-값 **'crow'**는 배열에 없지만 해시 값은 **001010**이므로 연산 결과에서 **true**가 나왔다. 이것이 바로 Bloom Filter의 FPP특성. 즉 없는 값을 있는 것으로 계산할 수 있는 특성이다. 예제에서는 이해를 돕기 위해 필터의 길이와 해시 함수가 2개로 FPP가 매우 높은 구현을 해서 전혀 쓸모없는 필터를 구성했다.
+값 **'crow'**는 배열에 없지만 해시 값은 **001010**이므로 연산 결과에서 **true**가 나왔다. 이것이 바로 Bloom Filter의 FPP특성. 없는 값을 있는 것으로 계산할 수 있는 특성이다. 이런 특성에도 불구하고 이 알고리즘 사용하는 이유는 **메모리 사용량이 적다는 점** 때문이다.
+
+일반적으로 배열에 특정 값이 존재하는지 빠르게 찾기 위해서 값을 키로 갖는 객체를 만들어 사용한다. 해당 객체 안에 키 값이 있다면 배열 내에 값이 존재하는 것이다. 이 경우 객체외 키의 갯수만큼의 메모리 공간을 더 사용해야 한다. 하지만 예제의 필터에서는 6칸의 배열만 필요했다. 실무에서도 256길이의 필터면 대 부분 해결되는 수준이다.
 
 > 혹시 위에 언급하는 예제를 데모로 보고 싶다면 [Bloom Filters by Example](https://llimllib.github.io/bloomfilter-tutorial/)을 참고하기 바란다.
 
-하지만 실무에서는 이 FPP를 0%에 근접하도록 각 변수의 값을 계산해 적용한다. 위의 예제에서 바꾼다면 필터의 길이를 256과 같이 매우 길게 하고. 해시 함수도 20개 이상으로 많이 사용하면 정확도가 올라갈 것이다. 계산식도 나와 있는데 [Bloom Filter 사이즈 계산기](https://hur.st/bloomfilter)에서 확인해 볼 수 있다.
+실제로 서비스에 적용할 땐. 이 FPP를 0%에 근접하도록 각 변수의 값을 계산해 적용한다. 위의 예제에서 바꾼다면 필터의 길이를 256과 같이 매우 길게 하고. 해시 함수도 20개 이상으로 많이 사용하면 정확도가 올라갈 것이다. 계산식도 나와 있는데 [Bloom Filter 사이즈 계산기](https://hur.st/bloomfilter)에서 확인해 볼 수 있다.
 
 **요소에 들어가는 아이템의 개수 (n)**, **원하는 FPP값(p)**, **필터의 비트 개수(m)**, **해시 함수의 개수(k)**를 부분적으로 입력하면 입력하지 않은 변수의 최적의 값을 뽑아 준다.
 
@@ -133,6 +135,8 @@ class HelloComponent {
 이 때 **AppComponent**타입의 인스턴스를 찾기 위해 Angular내부적으로 먼저 **NodeInjector**를 거슬러 올라가며 찾고 찾지 못하면 이어 **ModuleInjector**를 찾아 올라가는 동작을 하게 된다.
 
 이 중 **NodeInjector**는 Component들의 계층 구조에서 bootstrap된 최 상위 컴포넌트 까지 마치 DOM트리에서 버블링이 일어나는 것 처럼 각 Component마다의 providers, viewProviders를 살펴본다.
+
+![Angular의 Injector Chain](./injector-chain.png)
 
 이 때 Component의 메타데이터에 설정한 배열을 직접 살피는 게 아니라. 각 노드에 있는 Injector 인스턴스에게 특정 타입으로 생성된 인스턴스가 있는지 묻게 된다. 바로 [이 과정](https://github.com/angular/angular/blob/8.2.14/packages/core/src/render3/di.ts#L332)에서 [Bloom Filter를 사용](https://github.com/angular/angular/blob/8.2.14/packages/core/src/render3/di.ts#L588)한다.
 
