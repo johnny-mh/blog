@@ -123,8 +123,8 @@ const Index = ({
                 </a>
                 <img
                   className="travis"
-                  src="https://camo.githubusercontent.com/a31219d03bc899f7be78eafd1240cc4dbcd81bb7/68747470733a2f2f7472617669732d63692e6f72672f6a6f686e6e792d6d682f72786a732d7368656c6c2e7376673f6272616e63683d6d6173746572"
-                  alt="travisci"
+                  src="https://github.com/johnny-mh/rxjs-shell/workflows/CI/badge.svg"
+                  alt="CI"
                 />
               </h4>
               <div>
@@ -146,5 +146,4 @@ Index.propTypes = {
     }),
   }),
 }
-
 export default Index
