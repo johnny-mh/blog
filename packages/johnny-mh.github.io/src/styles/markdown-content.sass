@@ -22,3 +22,26 @@
 
   h3
     font-size: 1.2rem;
+
+.markdown-content.about
+  color: #111;
+  cursor: default;
+
+  h2
+    margin-top: 50px;
+    font-size: 1.6rem;
+  em
+    color: #666;
+  h2:first-child
+    margin-top: 0px !important;
+  ul
+    line-height: 2rem;
+
+  li ul li
+    transition: color;
+    transition-duration: 100ms;
+    transition-timing-function: ease-in;
+    color: #ccc;
+  
+  li:hover ul li
+    color: #111;

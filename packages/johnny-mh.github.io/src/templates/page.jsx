@@ -23,14 +23,16 @@ const AboutTemplate = ({
       frontmatter: { title },
     },
   },
-}) => (
-  <Layout>
-    <SEO title={title} />
-    <div
-      className="markdown-content"
-      dangerouslySetInnerHTML={{ __html: html }}></div>
-  </Layout>
-)
+}) => {
+  return (
+    <Layout>
+      <SEO title={title} />
+      <div
+        className={`markdown-content${title === 'about' ? ' about' : ''}`}
+        dangerouslySetInnerHTML={{ __html: html }}></div>
+    </Layout>
+  )
+}
 
 AboutTemplate.propTypes = {
   data: PropTypes.shape({
