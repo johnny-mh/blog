@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.1](https://github.com/johnny-mh/blog/compare/johnny-mh.github.io@1.5.0...johnny-mh.github.io@1.5.1) (2021-01-15)
+
+**Note:** Version bump only for package johnny-mh.github.io
+
+
+
+
+
 # [1.5.0](https://github.com/johnny-mh/blog/compare/johnny-mh.github.io@1.0.8...johnny-mh.github.io@1.5.0) (2021-01-12)
 
 
