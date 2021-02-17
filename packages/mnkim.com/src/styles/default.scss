@@ -1,0 +1,123 @@
+html,
+body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Nanum Myeongjo', serif;
+  font-weight: normal;
+  word-wrap: break-word;
+  font-kerning: normal;
+  -moz-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  -ms-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  -webkit-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  color: #424242;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 1.2em;
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+h2 {
+  font-size: 1.8rem;
+  line-height: 1.2em;
+}
+
+h3 {
+  font-size: 1.6rem;
+  line-height: 1.1em;
+}
+
+h4 {
+  font-size: 1.4rem;
+  line-height: 1.1em;
+}
+
+h5 {
+  font-size: 1.2rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: #121212;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* 본문 */
+.markdown-content {
+  p,
+  figure.gatsby-resp-image-figure {
+    font-family: 'Nanum Myeongjo', serif;
+    margin: 0 0 28px;
+  }
+
+  figure.gatsby-resp-image-figure figcaption {
+    font-family: 'Nanum Myeongjo', serif;
+    margin: 7px 0 0 0;
+    font-size: 0.8rem;
+  }
+
+  p {
+    padding: 0;
+    line-height: 1.7em;
+    letter-spacing: 0px;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0 0 28px;
+  }
+
+  ol,
+  ul {
+    margin: 0 0 28px;
+    padding-left: 28px;
+  }
+
+  ol li {
+    list-style: decimal outside;
+    line-height: 1.5em;
+  }
+
+  ul li {
+    list-style: disc outside;
+    line-height: 1.5em;
+  }
+
+  hr {
+    width: 50%;
+    margin-bottom: 28px;
+  }
+}

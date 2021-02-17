@@ -1,2 +1,2 @@
-import './src/styles/reset.css'
-import './src/styles/default.sass'
+import './src/styles/reset.scss'
+import './src/styles/default.scss'
